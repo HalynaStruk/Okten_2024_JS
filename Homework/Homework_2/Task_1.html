@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+
+    /* Масиви та об'єкти: */
+
+    /* - Створити масив, наповнити його 10 елементами будь-якого типу, вивести кожен елемент в консоль */
+    let array = ['poodle', 3 , true, 'beagle', 20, false, 'golden retriever', 4, true, true];
+    console.log(array[0]);
+    console.log(array[1]);
+    console.log(array[2]);
+    console.log(array[3]);
+    console.log(array[4]);
+    console.log(array[5]);
+    console.log(array[6]);
+    console.log(array[7]);
+    console.log(array[8]);
+    console.log(array[array.length-1]);
+
+    /* - Створити 3 об'єкти які описують книги.
+    Поля об'єкту : title ,pageCount, genre. */
+    let books = [
+        {title: 'Harry Potter', pageCount: 420, genre: 'fantasy'},
+        {title: 'World History', pageCount: 233, genre: 'history'},
+        {title: 'The Snow Queen', pageCount: 35, genre: 'fairy tale'}
+    ]
+    /* - Створити 3 об'єкти які описують книги.
+    Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - являється  масивом. Кожен автор має поля name та age. */
+    let newBooks = [
+        {   title: 'Little Rabit',
+            pageCount: '33',
+            genre: 'fairy tale',
+            authors: [
+                {name: 'Michael Rosen', age:45},
+                {name: 'Arthur Robins', age: 33}
+            ]
+        },
+        {   title: 'Dog Breeds',
+            pageCount: '333',
+            genre: 'encyclopedia',
+            authors: [
+                {name: 'Peter Larkin', age:65},
+                {name: 'Mike Stockman', age: 37}
+            ]
+        },
+        {   title: 'A History of Ukraine',
+            pageCount: '432',
+            genre: 'fairy tale',
+            authors: [
+                {name: 'Oleksandr Palii', age:55},
+                {name: 'Serhii Plokhy', age: 28}
+            ]
+        }
+
+    ]
+    /* - Створити масив з 10 об'єктами які описують сутніть "користувач".
+    Поля: name, username,password. Вивести в консоль пароль кожного користувача */
+
+
+
+    /* Логічні розгалуження: */
+
+    /* - Є змінна х, якій ви надаєте довільне числове значення.
+    Якщо змінна x не дорівнює нулю, виведіть 'Вірно', інакше виведіть 'Невірно'.
+     Перевірте  скрипт при a, що дорівнює 1, 0, -3 */
+
+    /* - Дано змінну time яка рівна числу від 0 до 59.
+    Потрібно написати код, який перевірить, до якої четверті години попадає число
+    (в першу, другу, третю или четверту частину години). */
+
+    /* - У змінній day дано якесь число від 1 до 31.
+    Потрібно визначити, у яку половину(декаду) місяця потрапляє це число (у першу, другу чи третю). */
+
+    /* - Скласти розклад на тиждень за домопоги switch.
+    Користувач вводить порядковий номер дня тижня і на екрані відображається інфа
+    що заплановано на цей день (можна замість плану на день, назву дня англійською). */
+
+    /* - Користувач вводить або має два числа.
+    Потрібно знайти та вивести максимальне число з тих двох .
+    Також потрібно врахувати коли введені рівні числа. */
+
+    /* - є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно).
+     Напишіть код який, за допомоги  оператора || буде присвоювати змінній х значення "default"
+     якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false) */
+
+
+    /* - з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray.
+    За допомоги іф перевірити кожен його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер". */
+
+
+</script>
+</body>
+</html>
