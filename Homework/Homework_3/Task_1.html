@@ -24,7 +24,6 @@
 </head>
 <body>
 
-
 <script>
     // - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом всередині
     let colors = ['Pink', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet','Dark Violet', 'Black'];
@@ -47,7 +46,7 @@
     for (let i = 0; i < languages.length; i++) {
         let language = languages[i];
         document.write(`
-            <div class="task_2">${language.id}.${language.name}</div>
+            <div class="task_2">${language.id}.${language.name} index is ${i}</div>
         `);
     }
     // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом всередині.
@@ -73,8 +72,37 @@
         {title: 'Task', page: 100},
         {title: 'Answers', page: 120}
     ];
+    let j = 0;
+    while (j < content.length) {
+        document.write(`<h1 style="color:green;">${content[j].title} ------ ${content[j].page} page</h1>`);
+        j++;
+    }
     // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом і індексом всередині.
-    //
+    let lorem = [
+        'Lorem ipsum',
+        'dolor sit amet',
+        'consectetur adipisicing elit',
+        'Animi aperiam corporis',
+        'debitis eos error',
+        'fuga hic iusto',
+        'laboriosam maiores maxime',
+        'natus odit officiis optio',
+        'quod sequi, sit tenetur voluptatem?',
+        'Alias dolores ducimus eum',
+        'quis reprehenderit suscipit voluptates!',
+        'Aliquam asperiores at blanditiis corporis',
+        'lorem ipsum',
+        'dolor doloribus dolorum',
+        'earum eum ipsum iure',
+        'iusto laboriosam',
+        'laudantium obcaecati',
+        'officiis perspiciatis quo',
+        'sunt, velit vero voluptatem!']
+    let k = 0;
+    while (k < lorem.length) {
+        document.write(`<h1 style="color:blue;">${k}. ${lorem[k]}</h1>`);
+        k++;
+    }
     // - Використовуючи данні з масиву, за допомоги document.write та циклу
     // побудувати структуру по шаблону
     // Масив:
