@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .task_1{
+            width: 50px;
+            height: 35px;
+            border: 2px solid darkgrey;
+            background-color: cornflowerblue;
+        }
+        .task_2{
+            width: 100px;
+            height: 50px;
+            border: 2px solid darkgrey;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    // - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом всередині
+    let colors = ['Pink', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet','Dark Violet', 'Black'];
+    for (const color of colors) {
+        document.write(`<div class="task_1">${color}</div>`);
+    }
+    // - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом і індексом всередині
+    let languages = [
+        {id: 1, name: 'Chinese'},
+        {id: 2, name: 'Spanish'},
+        {id: 3, name: 'English'},
+        {id: 4, name: 'Arabic'},
+        {id: 5, name: 'Polish'},
+        {id: 6, name: 'French'},
+        {id: 7, name: 'Portuguese'},
+        {id: 8, name: 'Japanese'},
+        {id: 9, name: 'German'},
+        {id: 10, name: 'Ukrainian'}
+    ];
+    for (let i = 0; i < languages.length; i++) {
+        let language = languages[i];
+        document.write(`
+            <div class="task_2">${language.id}.${language.name}</div>
+        `);
+    }
+    // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом всередині.
+    let content = [
+        {title: 'English tenses', page: 1},
+        {title: 'Irregular verbs (list)', page: 5},
+        {title: 'Going to and present tenses for future', page: 10},
+        {title: 'Modal verbs can, may, must, have to', page: 15},
+        {title: 'Be able to', page: 20},
+        {title: 'Be allowed to', page: 25},
+        {title: 'Gerund and infinitive', page: 30},
+        {title: 'Imperative', page: 35},
+        {title: 'Passive voice', page: 40},
+        {title: 'Conditional tense', page: 45},
+        {title: 'Conditional sentences (if-clauses)', page: 60},
+        {title: 'Time clauses', page: 65},
+        {title: 'Relative clauses', page: 70},
+        {title: 'Direct and indirect object', page: 75},
+        {title: 'Indirect questions', page: 80},
+        {title: 'Question tags', page: 85},
+        {title: 'Reported speech', page: 90},
+        {title: 'Nouns', page: 95},
+        {title: 'Task', page: 100},
+        {title: 'Answers', page: 120}
+    ];
+    // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом і індексом всередині.
+    //
+    // - Використовуючи данні з масиву, за допомоги document.write та циклу
+    // побудувати структуру по шаблону
+    // Масив:
+    //
+    //     let listOfItems = ['html', 'css', 'javascript', 'mysql', 'mongodb', 'react', 'angular', 'node.js'];
+    //
+    // ШАБЛОН:
+    //     <ul>
+    //         <li>ITEM OF ARRAY</li>
+    //         <!--
+    //             і тд інші об'єкти масиву
+    //              ...
+    //              ...
+    //              ...
+    //         -->
+    //     </ul>
+    //
+    // замість 'ITEM OF ARRAY' підставити елемент з масиву щоб получився цілий список з даними з масиву
+    //
+    // -----------------------------------------------
+    //
+    //     Використовуючи данні з масиву, за допомоги document.write та циклу
+    // побудувати структуру по шаблону
+    // Великими літерами прописанні властивості об'єкту які потрібно впровадити в шаблон
+    //
+    // let products = [
+    //     {
+    //         title: 'milk',
+    //         price: 22,
+    //         image: 'https://www.mcqueensdairies.co.uk/wp-content/uploads/2019/02/Mcqueens_1litre_whole_organic-300x300-3.jpg'
+    //     },
+    //     {
+    //         title: 'juice',
+    //         price: 27,
+    //         image: 'https://images-na.ssl-images-amazon.com/images/I/61jL2GCuKLL._SX679_PIbundle-24,TopRight,0,0_AA679SH20_.jpg'
+    //     },
+    //     {
+    //         title: 'tomato',
+    //         price: 47,
+    //         image: 'https://dictionary.cambridge.org/ru/images/thumb/tomato_noun_001_17860.jpg?version=5.0.74'
+    //     },
+    //     {
+    //         title: 'tea',
+    //         price: 15,
+    //         image: 'https://yogiproducts.com/wp-content/uploads/2009/03/YT-US-CAR-RelaxedMind-C23-202201-V2-3DFront_withGlow-300DPI-1.png'
+    //     },
+    // ];
+    //
+    // ШАБЛОН
+    // <div class="product-card">
+    //     <h3 class="product-title">TITLE. Price - PRICE</h3>
+    // <img src="IMAGE" alt="" class="product-image">
+    // </div>
+    // Замість TITLE PRICE IMAGE - підставити відповідні поля з об'єкту
+    //
+    //
+    //
+    // --------------------
+    //     є масив
+    // let users = [
+    //     {name: 'vasya', age: 31, status: false},
+    //     {name: 'petya', age: 30, status: true},
+    //     {name: 'kolya', age: 29, status: true},
+    //     {name: 'olya', age: 28, status: false},
+    //     {name: 'max', age: 30, status: true},
+    //     {name: 'anya', age: 31, status: false},
+    //     {name: 'oleg', age: 28, status: false},
+    //     {name: 'andrey', age: 29, status: true},
+    //     {name: 'masha', age: 30, status: true},
+    //     {name: 'olya', age: 31, status: false},
+    //     {name: 'max', age: 31, status: true}
+    // ];
+    // за допомоги циклу вивести:
+    //     - користувачів зі статусом true
+    // - користувачів зі статусом false
+    // - користувачів які старші за 30 років
+</script>
+</body>
+</html>
