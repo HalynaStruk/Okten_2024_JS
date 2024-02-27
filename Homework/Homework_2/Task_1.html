@@ -29,11 +29,9 @@
 
     /* - Створити 3 об'єкти які описують книги.
     Поля об'єкту : title ,pageCount, genre. */
-    let books = [
-        {title: 'Harry Potter', pageCount: 420, genre: 'fantasy'},
-        {title: 'World History', pageCount: 233, genre: 'history'},
-        {title: 'The Snow Queen', pageCount: 35, genre: 'fairy tale'}
-    ]
+    let book1 = {title: 'Harry Potter', pageCount: 420, genre: 'fantasy'};
+    let book2 = {title: 'World History', pageCount: 233, genre: 'history'};
+    let book3 = {title: 'The Snow Queen', pageCount: 35, genre: 'fairy tale'};
     /* - Створити 3 об'єкти які описують книги.
     Поля об'єкту : title ,pageCount, genre, authors. Поле "автори" - являється  масивом. Кожен автор має поля name та age. */
     let newBooks = [
@@ -164,18 +162,11 @@
         console.log(b);
     }
 
-    /* - є змінна х, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно).
+    /* - є змінна x, яка може прийняти будь-яке значення (стрінг, число, undefined, null  і тд включно).
      Напишіть код який, за допомоги  оператора || буде присвоювати змінній х значення "default"
-     якщо значення змінної х являється falsy (хибноподібні, тобто приводиться до false) */
-    let xx = true;
-    if (typeof xx === 'string' || typeof xx === 'number' || typeof xx === 'undefined' || xx === true || typeof xx === 'object') {
-        console.log(xx);
-        console.log(typeof xx);
-    } else {
-        xx = 'default';
-        console.log(xx);
-    }
-
+     якщо значення змінної x являється falsy (хибноподібні, тобто приводиться до false) */
+    let x2 = 0 || 'default';
+    console.log(x2);
     /* - з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray.
     За допомоги іф перевірити кожен його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер". */
     let coursesAndDurationArray = [
