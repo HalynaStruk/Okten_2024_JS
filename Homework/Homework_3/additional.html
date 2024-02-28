@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+    let array = [2,17,13,6,22,31,45,66,100,-18];
+    // 1. перебрати його циклом while
+    let i = 0;
+    while (i < array.length) {
+        // console.log(array[i]);
+        i++;
+    }
+    // 2. перебрати його циклом for
+    for (const number of array) {
+        // console.log(number);
+    }
+    // 3. перебрати циклом while та вивести  числа тільки з непарним індексом
+    let j = 0;
+    while (j < array.length) {
+        if (j%2 === 1) {
+            // console.log(array[j]);
+        }
+        j++;
+    }
+    // 4. перебрати циклом for та вивести  числа тільки з непарним індексом
+    for (let k = 0; k < array.length; k++) {
+        if (k%2 === 1) {
+            console.log(array[k]);
+        }
+    }
+    // 5. перебрати циклом while та вивести  числа тільки парні  значення
+    let h = 0;
+    while (h < array.length) {
+        if (array[h]%2 === 0) {
+            console.log(array[h]);
+        }
+        h++;
+    }
+    // 6. перебрати циклом for та вивести  числа тільки парні  значення
+    for (const number of array) {
+        if (number%2 === 0) {
+            console.log(number);
+        }
+    }
+    // 7. замінити кожне число кратне 3 на слово "okten"
+    for (let k = 0; k < array.length; k++) {
+        if (array[k]%3 === 0){
+            array[k] = "okten";
+            console.log(array);
+        }
+    }
+    // 8. вивести масив в зворотньому порядку.
+    for (let k = array.length - 1; k >= 0; k--) {
+        console.log(array[k]);
+    }
+
+    // стоврити масив книжок (назва, кількість сторінок, автори , жанри).
+    let newBooks = [
+        {   title: 'Little Rabit',
+            pageCount: 33,
+            genre: 'fairy tale',
+            authors: [
+                {name: 'Michael Rosen', age:45},
+                {name: 'Arthur Robins', age: 33}
+            ]
+        },
+        {   title: 'Dog Breeds',
+            pageCount: 432,
+            genre: 'encyclopedia',
+            authors: [
+                {name: 'Peter Larkin', age:65},
+                {name: 'Michael Larkin', age:30},
+                {name: 'Mike Stockman', age: 37}
+            ]
+        },
+        {   title: 'A History of Ukraine',
+            pageCount: 333,
+            genre: 'fairy tale',
+            authors: [
+                {name: 'Oleksandr Palii', age:55}
+            ]
+        }
+
+    ]
+    // -знайти наібльшу книжку.
+    for (let k = 0; k < newBooks.length; k++) {
+        if (newBooks[k].pageCount > newBooks[0].pageCount) {
+            newBooks[0].pageCount = newBooks[k].pageCount;
+        }
+    }
+    console.log(newBooks[0].pageCount);
+
+    // - знайти книжку/ки з найбільшою кількістю жанрів
+
+    // - знайти книжку/ки з найдовшою назвою
+    // - знайти книжку/ки які писали 2 автори
+    // - знайти книжку/ки які писав 1 автор
+
+</script>
+</body>
+</html>
