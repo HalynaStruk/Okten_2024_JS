@@ -14,6 +14,11 @@
             border: 2px solid darkgrey;
             background-color: cornflowerblue;
         }
+        .block{
+            display: flex;
+            column-gap: 4px;
+            margin-bottom: 4px;
+        }
         .task_2{
             width: 100px;
             height: 50px;
@@ -27,9 +32,11 @@
 <script>
     // 1. За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом всередині
     let colors = ['Pink', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet','Dark Violet', 'Black'];
+    document.write(`<div class="block">`);
     for (const color of colors) {
         document.write(`<div class="task_1">${color}</div>`);
     }
+    document.write(`</div>`);
     // 2. За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом і індексом всередині
     let languages = [
         {id: 1, name: 'Chinese'},
@@ -43,12 +50,14 @@
         {id: 9, name: 'German'},
         {id: 10, name: 'Ukrainian'}
     ];
+    document.write(`<div class="block">`);
     for (let i = 0; i < languages.length; i++) {
         let language = languages[i];
         document.write(`
             <div class="task_2">${language.id}.${language.name} index is ${i}</div>
         `);
     }
+    document.write(`</div>`);
     // 3. За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом всередині.
     let content = [
         {title: 'English tenses', page: 1},
@@ -121,13 +130,13 @@
     //     </ul>
     //
     // замість 'ITEM OF ARRAY' підставити елемент з масиву щоб получився цілий список з даними з масиву
+ // document.write(`<ul></ul>`);
 
+    document.write(`<ul>`);
     for (const item of listOfItems) {
-        document.write(`<ul>
-                            <li>${item}</li>
-                        </ul>`);
+        document.write(`<li>${item}</li>`);
     }
-
+    document.write(`</ul>`);
 
     // 6.    Використовуючи данні з масиву, за допомоги document.write та циклу
     // побудувати структуру по шаблону
@@ -167,8 +176,7 @@
                     <div>
                         <h3>${product.title} - ${product.price}</h3>
                         <img style="width: 100px; height: 100px;" src="${product.image}" alt="product">
-                    </div>
-        `);
+                    </div>`);
     }
 
     // 7.
