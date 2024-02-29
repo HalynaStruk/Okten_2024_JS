@@ -84,6 +84,23 @@
     }
     arrayPrimitiveElements(1,2,3,4,5,true,6,7,8,'asd');
     // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+    function users(userObj) {
+        document.write(`
+                        <div>
+                            <p>
+                                ${userObj.id}. ${userObj.name} - ${userObj.age} years old
+                            </p>
+                        </div>
+                       `)
+    }
+    let arr = [
+        {id: 1,name: 'max', age: 29},
+        {id: 2,name: 'yana', age: 30},
+        {id: 3,name: 'ivan', age: 32}
+    ]
+    for (const arrElement of arr) {
+        users(arrElement);
+    }
 
     // - створити функцію яка повертає найменьше число з масиву
     // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
