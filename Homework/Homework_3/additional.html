@@ -105,19 +105,25 @@
     }
     console.log(newBooks[0].genre);
     // - знайти книжку/ки з найдовшою назвою
+    // debugger;
     for (let k = 0; k < newBooks.length; k++) {
         if (newBooks[k].title.length > newBooks[0].title.length) {
-            newBooks[0].title.length = newBooks[k].title.length;
+            newBooks[0].title = newBooks[k].title;
         }
     }
     console.log(newBooks[0].title);
-    console.log(newBooks[0].title.length);
-    console.log(newBooks[1].title.length);
-    console.log(newBooks[2].title.length);
-
     // - знайти книжку/ки які писали 2 автори
+    for (let k = 0; k < newBooks.length; k++) {
+        if (newBooks[k].authors.length === 2) {
+            console.log(newBooks[k]);
+        }
+    }
     // - знайти книжку/ки які писав 1 автор
-
+    for (let k = 0; k < newBooks.length; k++) {
+        if (newBooks[k].authors.length === 1) {
+            console.log(newBooks[k]);
+        }
+    }
 </script>
 </body>
 </html>
