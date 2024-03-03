@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+    let obj = {
+        imya: 'ivan',
+        greeting: function (msg) {
+            console.log(msg + ' my name is ' + obj.imya);
+        }
+    }
+    obj.greeting('hello');
+
+    let objThis = {
+        imya: 'ivan',
+        greeting: function (msg) {
+            console.log(msg + ' my name is ' + this.imya);
+            // this посилається на обєкт this.imya = obj.imya
+        }
+    }
+    objThis.greeting('Привіт');
+
+    // function declaration work hoisting
+    function asd() {
+        console.log(this); // this посилається на window
+    }
+
+    // function expression doesn't work hoisting
+    // іншими словами її не можна виклакати вище, тільки нижче деклараціі
+    let foobar = function () {
+        console.log('jhtyg');
+    }
+    foobar();
+
+
+</script>
+</body>
+</html>
