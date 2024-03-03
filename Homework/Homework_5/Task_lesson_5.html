@@ -15,21 +15,80 @@
 <script>
     // ВСЕ ЗРОБИТИ СТРІЛОЧНИМИ ФУНКЦІЯМИ!
     // - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
-    let areaRectangle = (a,b) => a*b;
+    const areaRectangle = (a,b) => a*b;
     console.log(areaRectangle(2,5));
 
     // - створити функцію яка обчислює та повертає площу кола з радіусом r
+    const areaCircle = r => Math.round(Math.PI*Math.pow(r,2));
+    console.log(areaCircle(5));
     // - створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
+    const areaCylinder = (r,h) =>  Math.round(Math.PI*r*h);
+    console.log(areaCylinder(5,10));
     // - створити функцію яка приймає масив та виводить кожен його елемент
+    const arrays = (...array) => {
+        for (const arrayElement of array) {
+            console.log(arrayElement);
+        }
+    }
+    arrays([30, 40 ,50 , 'asd', 60, 70]);
     // - створити функцію яка створює параграф з текстом. Текст задати через аргумент
+    const content = paragraph => document.write(`<p style="color: red">${paragraph}</p>`);
+    content('Hello to');
     // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
-    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+    const list = item => {
+        document.write(`<ul style="color: orange">
+                            <li>${item}</li>
+                            <li>${item}</li>
+                            <li>${item}</li>
+                        </ul>`)
+    }
+    list('you');
+    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий.
+    // Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+    const list2 = (item,number) => {
+        document.write(`<ul style="color: yellow">`);
+        for (let i = 0; i < number; i++) {
+            document.write(`<li>${item}</li>`)
+        }
+        document.write(`</ul>`);
+    }
+    list2('all people',3);
     // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
-    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+    const arrayPrimitiveElements = (...array) => {
+        document.write(`<ul style="color: green">`);
+        for (let arrayElement of array) {
+            document.write(`<li>${arrayElement}</li>`);
+        }
+        document.write(`</ul>`);
+    }
+    arrayPrimitiveElements('ivan', 30, 'max', 32, 'yana', 29, true);
+    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ.
+    // Для кожного об'єкту окремий блок.
+    const users = userObj => {
+        document.write(`
+                        <div style="color: blue">
+                            <p>
+                                ${userObj.id}. ${userObj.name} - ${userObj.age} years old
+                            </p>
+                        </div>
+                       `)
+    }
+    let arr = [
+        {id: 1,name: 'vasya', age: 29},
+        {id: 2,name: 'ira', age: 30},
+        {id: 3,name: 'maria', age: 32}
+    ]
+    for (const arrElement of arr) {
+        users(arrElement);
+    }
     // - створити функцію яка повертає найменьше число з масиву
-    // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
+
+    // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його.
+    // Приклад sum([1,2,10]) //->13
+
     // - створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
     // Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
+
     // - Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
     // Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
 </script>
