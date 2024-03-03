@@ -50,14 +50,26 @@
 
     let obj = {
         imya: 'ivan',
-        greeting: (msg) => {
-            console.log(msg + ' my name is ' + this.imya);
+        greeting: () => {
+            console.log(' my name is ' + obj.imya);
             // undefined тому що arrow function посилається window
             // в такому випадку замість this.imya використовувати obj.imya
             // в основному arrow function не використовують в обєктах
+        },
+        sayHi: function () {
+            // this = obj
+            let arrFn = () => {
+                console.log('Hi my name is ' + this.imya);
+            }
+            arrFn();
+            // оскільки arrFn викликається function sayHi,
+            // яка посилаться на обєкт, то arrFn успадкує це
+            // але краще не робити так, і не викликати функцію у функції
         }
     }
-    obj.greeting('hello');
+    obj.greeting();
+    obj.sayHi();
+
 
     // let calculation = (a,b) => {a+b};
     // console.log(calculation(2,3)); // undefined
