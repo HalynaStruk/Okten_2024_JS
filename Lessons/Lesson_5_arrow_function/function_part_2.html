@@ -11,36 +11,58 @@
 <body>
 
 <script>
+
+    // function inside the object
+    // let obj = {
+    //     imya: 'ivan',
+    //     greeting: function (msg) {
+    //         console.log(msg + ' my name is ' + obj.imya);
+    //     }
+    // }
+    // obj.greeting('hello');
+    //
+    // let objThis = {
+    //     imya: 'ivan',
+    //     greeting: function (msg) {
+    //         console.log(msg + ' my name is ' + this.imya);
+    //         // this посилається на обєкт this.imya = obj.imya
+    //     }
+    // }
+    // objThis.greeting('Привіт');
+
+    // function declaration work hoisting
+    // function asd() {
+    //     console.log(this); // this посилається на window
+    // }
+
+    // function expression doesn't work hoisting
+    // іншими словами її не можна виклакати вище, тільки нижче деклараціі
+    // let foobar = function () {
+    //     console.log('jhtyg');
+    // }
+    // foobar();
+
+    // arrow function
+    let arrow = () => {
+        console.log('arrow function');
+    }
+    arrow();
+
     let obj = {
         imya: 'ivan',
-        greeting: function (msg) {
-            console.log(msg + ' my name is ' + obj.imya);
+        greeting: (msg) => {
+            console.log(msg + ' my name is ' + this.imya);
+            // undefined тому що arrow function посилається window
+            // в такому випадку замість this.imya використовувати obj.imya
+            // в основному arrow function не використовують в обєктах
         }
     }
     obj.greeting('hello');
 
-    let objThis = {
-        imya: 'ivan',
-        greeting: function (msg) {
-            console.log(msg + ' my name is ' + this.imya);
-            // this посилається на обєкт this.imya = obj.imya
-        }
-    }
-    objThis.greeting('Привіт');
-
-    // function declaration work hoisting
-    function asd() {
-        console.log(this); // this посилається на window
-    }
-
-    // function expression doesn't work hoisting
-    // іншими словами її не можна виклакати вище, тільки нижче деклараціі
-    let foobar = function () {
-        console.log('jhtyg');
-    }
-    foobar();
-
-
+    // let calculation = (a,b) => {a+b};
+    // console.log(calculation(2,3)); // undefined
+    // let suma = calculation(2,3);
+    // console.log(suma);
 </script>
 </body>
 </html>
