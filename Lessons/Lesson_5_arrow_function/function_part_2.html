@@ -70,11 +70,20 @@
     obj.greeting();
     obj.sayHi();
 
+    const foo = () => console.log('Hello foo');
+    foo();
+    const calculation = (a,b) => a+b;
+    console.log(calculation(2,3));
+    let suma = calculation(2,3);
+    console.log(suma);
 
-    // let calculation = (a,b) => {a+b};
-    // console.log(calculation(2,3)); // undefined
-    // let suma = calculation(2,3);
-    // console.log(suma);
+    const calc = (a,b) => {
+        console.log('answer');
+        return a+b;
+        // тут обовязково написати return,
+        // бо функція виконує більше ніж одну дію
+    };
+    console.log(calc(2,3));
 </script>
 </body>
 </html>
