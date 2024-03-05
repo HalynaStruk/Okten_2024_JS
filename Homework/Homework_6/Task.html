@@ -66,6 +66,7 @@
         return nums;
     }
     console.log(sortNums(nums, 'descending'));
+
     // ==========================
     // - є масив
     let coursesAndDurationArray = [
@@ -80,7 +81,11 @@
     let durationDes = coursesAndDurationArray.sort((duration, next) => next.monthDuration - duration.monthDuration);
     console.log(durationDes);
     // -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+    let monthDur = coursesAndDurationArray.filter(month => month.monthDuration > 5);
+    console.log(monthDur);
     // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
+    let newArray = coursesAndDurationArray.map((item, index) => ({id: index+1, title: item.title, monthDuration: item.monthDuration}));
+    console.log(newArray);
 
     // =========================
     //     описати колоду карт (від 6 до туза без джокерів)
@@ -90,22 +95,73 @@
     // - всі буби
     // - всі трефи від 9 та більше
     //
-    // {
+    // {                     піка      буба    черва    трефа
     //     cardSuit: '', // 'spade', 'diamond','heart', 'clubs'
+     //                                 туз   валет
     //         value: '', // '6'-'10', 'ace','jack','queen','king','joker'
     //     color:'', // 'red','black'
     // }
+    let cardSuits = ['spade', 'diamond','heart', 'clubs'];
+    let values = ['6', '7', '8', '9', '10', 'ace','jack','queen','king'];
+    let color = {
+        spade: 'black',
+        diamond: 'red',
+        heart: 'red',
+        clubs: 'black'
+    };
 
+    let cards = () => {
+        let deckOfCards = [];
+        for (const cardSuit of cardSuits) {
+            for (const value of values) {
+                deckOfCards.push({cardSuit: cardSuit, value: value});
+            }
+        }
+        deckOfCards.map(card => card.cardSuit === 'diamond' || card.cardSuit === 'heart' ? card.color = 'red' : card.color = 'black');
+        return deckOfCards;
+    }
+    let deckOfCards = cards();
+    console.log(deckOfCards);
+    // - знайти піковий туз
+    let spadeAce = deckOfCards.filter(card => card.cardSuit === 'spade' && card.value === 'ace');
+    console.log(spadeAce);
+    // - всі шістки
+    let allSix = deckOfCards.filter(card => card.value === '6');
+    console.log(allSix);
+    // - всі червоні карти
+    let redCards = deckOfCards.filter(card => card.color === 'red');
+    console.log(redCards);
+    // - всі буби
+    let diamond = deckOfCards.filter(card => card.cardSuit === 'diamond');
+    console.log(diamond);
+    // - всі трефи від 9 та більше
+    let clubs = deckOfCards.filter(card => card.cardSuit === 'clubs' && card.value > 9);
+    console.log(clubs);
     // =========================
     //
     //     Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
     // {
     //     spades:[],
-    //         diamonds:[],
+    //     diamonds:[],
     //     hearts:[],
     //     clubs:[]
     // }
-
+    let reduse = deckOfCards.reduce((accumulator, card) => {
+        deckOfCards.filter(card => card.cardSuit === 'spades'  accumulator.spades.push(card));
+        // if (card.cardSuit === 'spades') {
+        //     accumulator.spades.push(card);
+        // } else if (card.cardSuit === 'diamonds') {
+        //     accumulator.diamonds.push(card);
+        // } else if (card.cardSuit === 'hearts') {
+        //     accumulator.heart.push(card);
+        // } else if (card.cardSuit === 'clubs') {
+        //     accumulator.clubs.push(card);
+        // }
+        return accumulator;
+    }, {spades:[], diamonds:[], hearts:[], clubs:[]});
+    console.log(reduse);
+    // let user = {name: ['iv', 'ann'], age: 4};
+    // console.log(user.name)
     // =========================
     //     взяти з arrays.js (який лежить в папці 2023 plan) масив coursesArray
     let coursesArray = [
@@ -178,6 +234,7 @@
         }
     ];
     // --написати пошук всіх об'єктів, в який в modules є sass
+
     // --написати пошук всіх об'єктів, в який в modules є docker
 </script>
 </body>
