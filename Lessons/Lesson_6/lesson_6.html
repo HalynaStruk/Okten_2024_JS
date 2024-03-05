@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+    // Функції обєктів
+  // let s1 = 'hello'; // примітивний тип даних
+  // let s2 = new String('helloooo'); // ref силочний тип даних
+  // s1.toUpperCase(); // ref
+  //
+  // console.log('asdqwe'[3]); // q
+  //
+  // let str1 = 'okten hello';
+  // let toUpperCase = str1.toUpperCase()
+  // console.log(toUpperCase, str1); // створений новий обєкт, де всі літери великі
+  // console.log(toUpperCase.toLowerCase());
+  // console.log(str1.startsWith('ok')); // true
+  // console.log(str1.startsWith('ten', 2)); // true
+  // console.log(str1.endsWith('ll')); // false
+  // console.log(str1.substring(1, str1.length - 3));
+  // console.log(str1.indexOf('o', 1)); // 10
+  // console.log(str1.indexOf('k')); // 1
+  // console.log(str1.charAt('2')); // t
+  //
+  // let sss = '=+3809704050654=';
+  // console.log(sss.substring(sss.indexOf('=') + 1, sss.indexOf('=', 3)));
+  //
+  // let num = '===+3809704050654====';
+  // console.log(num.replaceAll('=', ''));
+  //
+  // let objStr = 'vasya 31 male';
+  // function adapter(objStr) {
+  //     let split = objStr.split(' ');
+  //     return  {
+  //         name: split[0],
+  //         age: split[1],
+  //         gender: split[2]
+  //     }
+  // }
+  //
+  // console.log(adapter(objStr));
+  // let objStr2 = 'kokos 36 female';
+  // console.log(adapter(objStr2));
+
+    // Функції масивів
+    //
+    // let arr = [];
+    // console.log(typeof arr); // object
+    // console.log(Array.isArray(arr)); // true
+    // arr[arr.length] = 'asd';
+    // arr.push('qwe'); // додає в кінець
+    // arr.unshift('xxx'); // додає на початок
+    // console.log(arr); // ['xxx', 'asd', 'qwe']
+    // let pop = arr.pop(); // видаляє з кінця
+    // console.log(pop); // qwe
+    // let shift = arr.shift(); // видаляє з початку
+    // console.log(shift); // xxx
+    // console.log(arr); // ['asd']
+    //
+    // let numbers = [11, 22, 33, 44, 55, 66, 77, 88, 99];
+    // // let numbers1 = numbers.splice(2); // видалило все починаючи з другого
+    // // console.log(numbers1); // [33, 44, 55, 66, 77, 88, 99]
+    // // console.log(numbers); // [11, 22]
+    //
+    // console.log(numbers.splice(1, 2)); // [22, 33]
+    // // видалило починаєчи з першого елемента, два елемента
+    // console.log(numbers); // [11, 44, 55, 66, 77, 88, 99]
+    // let splice = numbers.splice(1, 2, 'asd', 'qwe');
+    // console.log(splice); // delete [44, 55]
+    // console.log(numbers); // replace [11, 'asd', 'qwe', 66, 77, 88, 99]
+    //
+    // let nums = [111, 222, 333];
+    // let newArray = numbers.concat(nums); //
+    // console.log(newArray); // [11, 'asd', 'qwe', 66, 77, 88, 99, 111, 222, 333]
+    // console.log(newArray.join('...'));
+    // console.log(newArray.reverse());
+
+    // callback function with array
+    let users = [
+        {name: 'vasya', age: 31, status: false},
+        {name: 'petya', age: 30, status: true},
+        {name: 'kolya', age: 29, status: true},
+        {name: 'olya', age: 28, status: false},
+        {name: 'Max', age: 30, status: true},
+        {name: 'anya', age: 31, status: false},
+        {name: 'oleg', age: 28, status: false},
+        {name: 'andrey', age: 29, status: true},
+        {name: 'masha', age: 30, status: true},
+        {name: 'olya', age: 31, status: false},
+        {name: 'max', age: 31, status: true}
+    ];
+
+    // forEach заміняє цикл
+    // ------- 1-й крок ------------
+    // function asd(user) {
+    //     console.log(user)
+    // }
+    // users.forEach(asd);
+    // // ------- його можна скоротити --------
+    // users.forEach(function asd(user) {
+    //     console.log(user)
+    // });
+    // // ------- найкоротший варіан(в такому вигляді його використовують) --------
+    // users.forEach(user => {console.log(user)});
+
+    // filter
+    // let filter = users.filter((user) => user.age > 30);
+    // console.log(filter);
+    //
+    // let filter2 = users.filter((user) => !user.status && user.age > 30);
+    // console.log(filter2);
+
+    // map
+    // надає можливість створити новий масив на основі елементів існуючого,
+    // застосовуючи до кожного елемента певну функцію
+    // let map = users.map((user) => ({imya: user.name, vik: user.age}))
+    // console.log(map);
+    //
+    // let map2 = users.map((user, index) => ({name: user.name, age: user.age, status: user.status, id: index + 1}))
+    // console.log(map2); // додалися id, створився новий масив з новими обєктами
+    // console.log(users); // users не змінився
+    //
+    // let map3 = users.map((user, index) => {
+    //     user.id = index + 1;
+    //     return user;
+    // });
+    // console.log(map3); // додалися id
+    // console.log(users); // додалися id також,
+    // // бо зверненя відбулось до user з масиву users
+
+    // sort
+    //
+    // let sortAge = users.sort((firstObj, neighbor) => {
+    //     return firstObj.age - neighbor.age; // user = firstObj
+    // })
+    // console.log(sortAge);
+    // по алфавіту
+    // let sortAlf = users.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+    // console.log(sortAlf);
+
+    // reduce
+    // використовується для обробки масиву та перетворення його елементів в єдине значення,
+    // використовуючи передану функцію callbackFn.
+
+    let reduce = users.reduce((accumulator, user) => {
+        if (user.status) {
+            accumulator[0].push(user);
+        } else {
+            accumulator[1].push(user);
+        }
+        return accumulator;
+    }, [[],[]]);
+    console.log(reduce);
+    console.log(reduce[0]);
+    console.log(reduce[1]);
+
+</script>
+</body>
+</html>
