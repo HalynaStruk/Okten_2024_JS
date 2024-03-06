@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+    // data and time
+    // let now = new Date();
+    // console.log(now);
+    // console.log(now.getFullYear());
+    // console.log(now.getMonth());
+    // console.log(now.getDay());
+    // console.log(now.getHours());
+    // console.log(now.getMinutes());
+    // console.log(now.getSeconds());
+    // console.log(now.getMilliseconds());
+    // console.log(now.getTime());
+    // let date1 = new Date(735358356);
+    // console.log(date1);
+    // let date2 = new Date("June 10 1991 12:30:34");
+    // console.log(date2);
+    // let date3 = new Date(1987,0,30,12,30,50,0);
+    // console.log(date3);
+    //
+    // let date4 = new Date(2024,10,30,19,30,50,0);
+    // console.log(date4); // Nov 30 2024 19:30:50
+    // date4.setDate(25);
+    // console.log(date4); // Nov 25 2024 19:30:50
+    //
+    // let user = {
+    //     id:1,
+    //     name: 'hhh',
+    //     bday: new Date(1994,10,30,6,30)
+    // }
+    // console.log(user);
+
+    // error handling:
+
+    // try -> catch
+    // console.log('start');
+    // try {
+    //     // console.log(a);
+    // } catch (e) {
+    //     console.log(e);
+    // } finally {
+    //     console.log('finally block');
+    // }
+    // console.log('end');
+
+    // примусове генерування помилки throw new Error()
+    // function calc(a,b) {
+    //     if (b === 0) {
+    //         throw new Error('b can not be 0');
+    //     }
+    //     return a/b;
+    // }
+    // calc(10, 0);
+
+    // ? ternary operator -  оператор опціональної послідовності
+    // let user = undefined;
+    // // user.name; // Uncaught TypeError: Cannot read properties of undefined (reading 'name')
+    // user?.name?.fn; // не буде помилки, бо ми провірили чи є у нас user за допомогою ?
+
+    // Деструктуризація
+    // let name = 'vasya';
+    // let age = 31;
+    // // let user = {
+    // //     name: name,
+    // //     age: age
+    // // }
+    // // коротший запис
+    // let user = {
+    //     name,
+    //     age,
+    //     foo () {
+    //         console.log(this);
+    //     }
+    // }
+    // console.log(user);
+    // user.foo();
+
+    // let {age, name} = user;
+    // let user = {
+    //     name: 'vasya',
+    //     age: 31,
+    //     foo () {
+    //          console.log('foo');
+    //     }
+    // }
+    // let {age, name} = user;
+    // console.log(name);
+    // console.log(age);
+    // function asd({name}) {
+    //     console.log(name);
+    // }
+    // asd({a:'asdasd', name:'max', age: 31});
+    // // в asd ми передаємо обєкт, але вказуємо,
+    // // що з обєкта ми беремо тільки name
+    //
+    // let {status} = user;
+    // console.log(status); // undefined, бо user не має status
+
+    // переназивання ключів
+    // let name = 'vasya';
+    // let age = 31;
+    // let user = {
+    //     name,
+    //     age,
+    //     foo () {
+    //         console.log(this);
+    //     },
+    //     wife: {
+    //         name: 'anna'
+    //     }
+    // }
+    // let {name: userName, age: userAge, wife:{name: wifeName}, wife} = user; // переназвали name в userName
+    // console.log(userName);
+    // console.log(wifeName);
+    // console.log(wife);
+
+    // let [a,b] = [11, 22, 33];
+    // console.log(a); // 11
+    // console.log(b); // 22
+    // let [x, ,y] = [11, 22, 33];
+    // console.log(x); // 11
+    // console.log(y); // 33
+
+    // let users = [
+    //     {name: 'vasya', age: 31, status: false},
+    //     {name: 'petya', age: 30, status: true},
+    //     {name: 'kolya', age: 29, status: true},
+    //     {name: 'olya', age: 28, status: false},
+    //     {name: 'max', age: 30, status: true},
+    //     {name: 'anya', age: 31, status: false},
+    //     {name: 'oleg', age: 28, status: false},
+    //     {name: 'andrey', age: 29, status: true},
+    //     {name: 'masha', age: 30, status: true},
+    //     {name: 'olya', age: 31, status: false},
+    //     {name: 'max', age: 31, status: true}
+    // ];
+    //
+    // let [{name, age, status}, user2] = users;
+    // console.log(user1);
+    // console.log(user2);
+
+    // Spread копія масиву чи обєкту
+    // let user = {
+    //     name: 'vasya',
+    //     age: 35
+    // };
+    // let user2 = user;
+    // let user3 = {
+    //     name: 'vasya',
+    //     age: 35
+    // }
+    // console.log(user === user2); // true
+    // console.log(user === user3); // false
+    //
+    // let user = {
+    //     name: 'vasya',
+    //     age: 35
+    // };
+    // let userCopy = {...user};
+    // console.log(userCopy);
+    // userCopy.age = 15;
+    // console.log(userCopy); // {name: 'vasya', age: 15}
+    // console.log(user); // {name: 'vasya', age: 35}
+    // console.log(user === userCopy); // false означає що вони між собою незалежні
+    //
+    // let user = {
+    //     name: 'vasya',
+    //     skills: ['html', 'js']
+    // }
+    // let userClone = {...user};
+    // console.log(user === userClone); // false
+    // console.log(user.skills === userClone.skills); //true означає що вони однакові
+    // // spread роюить поверхневу копію
+
+    // повноцінна копія
+    let user = {
+        name: 'vasya',
+        skills: ['html', 'js'],
+        greeting: function () {
+            
+        }
+    }
+    // JSON ФУНКЦІЇ всередині обєкту НЕ СКОПІЮЄ!!!
+    let userJsonClone = JSON.stringify(user); // перетворює на string
+    console.log(userJsonClone); // {"name":"vasya","skills":["html","js"]}
+    let parse = JSON.parse(userJsonClone); // перетворило на обєкт
+    console.log(parse); // {name: 'vasya',skills: ['html', 'js']}
+    console.log(user === parse); // false
+    console.log(user.skills === parse.skills); // false
+
+    // варіант ще однієї неповноцінної копії
+    let assign = Object.assign({},user);
+    console.log(assign);
+    console.log(user === assign); // false
+    console.log(user.skills === assign.skills); // true
+
+
+</script>
+</body>
+</html>
