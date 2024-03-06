@@ -251,15 +251,17 @@
     })
     console.log(filterDocker);
 
+    // ----------------------------------------------------------
     //  пробувала ще такий варіант, але filterDocker2 повертає пустий масив
-    // питання чи можна це зробити так, щоб змінна filterDocker2 виводила не пустий масив,
-    // а якраз ті відфільтровані, не розумію, де моя помилка
+    //  питання чи можна це зробити так, щоб змінна filterDocker2 виводила не пустий масив,
+    //  а якраз ті відфільтровані, не розумію, де моя помилка
+
     let filterDocker2 = coursesArray.filter(course => {
         course.modules.forEach(module => {
             if (module === 'docker') {
                 console.log(course); // тут виводить ті масиви, що мають module === 'docker'
+                // return course;
             }
-            return course;
         })
     })
     console.log(filterDocker2); // тут пустий масив
