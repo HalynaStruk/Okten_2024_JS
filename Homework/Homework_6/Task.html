@@ -35,6 +35,9 @@
     // - Є "брудна" стрінга let str = ' dirty string   ' .
     // Почистити її від зайвих пробілів.
     let str = ' dirty string   ';
+    // ----------------- найкращий варіант -------------------
+    console.log(str.trim(' '));
+    // ----------------- або -------------------
     console.log(str.replaceAll(' ', ''));
     // ----------------- або -------------------
     console.log(str.substring(str.indexOf(' ')+1, str.indexOf(' ', 11)));
@@ -135,7 +138,7 @@
     let diamond = deckOfCards.filter(card => card.cardSuit === 'diamond');
     console.log(diamond);
     // - всі трефи від 9 та більше
-    let clubs = deckOfCards.filter(card => card.cardSuit === 'clubs' && card.value > 9);
+    let clubs = deckOfCards.filter(card => card.cardSuit === 'clubs' && card.value > 9 || card.cardSuit === 'clubs' && card.value.length > 2 );
     console.log(clubs);
 
     // =========================
@@ -265,6 +268,10 @@
         })
     })
     console.log(filterDocker2); // тут пустий масив
+
+    // ----------------------------------------------------------
+    let filterDocker3 = coursesArray.filter(course => course.modules.includes('docker'));
+    console.log(filterDocker3);
 </script>
 </body>
 </html>
