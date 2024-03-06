@@ -149,7 +149,7 @@
     // }
     let reduse = deckOfCards.reduce((accumulator, card) => {
         if (card.cardSuit === 'spade') {
-            console.log(accumulator.spades.push(card));
+            accumulator.spades.push(card)
         } else if (card.cardSuit === 'diamond') {
             accumulator.diamonds.push(card);
         } else if (card.cardSuit === 'heart') {
@@ -233,8 +233,36 @@
         }
     ];
     // --написати пошук всіх об'єктів, в який в modules є sass
-
+    let filterSass = coursesArray.filter(course => {
+        for (let i = 0; i < course.modules.length; i++) {
+            if (course.modules[i] === 'sass') {
+                return course;
+            }
+        }
+    })
+    console.log(filterSass);
     // --написати пошук всіх об'єктів, в який в modules є docker
+    let filterDocker = coursesArray.filter(course => {
+        for (let i = 0; i < course.modules.length; i++) {
+            if (course.modules[i] === 'docker') {
+                return course;
+            }
+        }
+    })
+    console.log(filterDocker);
+
+    //  пробувала ще такий варіант, але filterDocker2 повертає пустий масив
+    // питання чи можна це зробити так, щоб змінна filterDocker2 виводила не пустий масив,
+    // а якраз ті відфільтровані, не розумію, де моя помилка
+    let filterDocker2 = coursesArray.filter(course => {
+        course.modules.forEach(module => {
+            if (module === 'docker') {
+                console.log(course); // тут виводить ті масиви, що мають module === 'docker'
+            }
+            return course;
+        })
+    })
+    console.log(filterDocker2); // тут пустий масив
 </script>
 </body>
 </html>
