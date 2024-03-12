@@ -165,12 +165,54 @@
     car2.addDriver({id:1, name:'max', driversLicense: 10});
 
     // -створити класс/функцію конструктор попелюшка з полями ім'я, вік, розмір ноги. Створити масив з 10 попелюшок.
+    function Cinderella(name, age, footSize) {
+        this.name = name;
+        this.age = age;
+        this.footSize = footSize;
+    }
+    let cinderellas = [];
+    function addObjInArray(cinderella) {
+        cinderellas.push(cinderella);
+    }
+    addObjInArray(new Cinderella('Aurora', 16, 36));
+    addObjInArray(new Cinderella('Ariel', 18, 38));
+    addObjInArray(new Cinderella('Belle', 16, 34));
+    addObjInArray(new Cinderella('Jasmine', 17, 35));
+    addObjInArray(new Cinderella('Cinderella', 20, 33));
+    addObjInArray(new Cinderella('Mulan', 15, 39));
+    addObjInArray(new Cinderella('Tiana', 21, 40));
+    addObjInArray(new Cinderella('Rapunzel', 14, 37));
+    addObjInArray(new Cinderella('Moana', 23, 39));
+    addObjInArray(new Cinderella('Raya', 21, 36));
+    console.log(cinderellas);
     // Сторити об'єкт класу "принц" за допомоги класу який має поля ім'я, вік, туфелька яку він знайшов.
+    function Prince(name, age, shoes) {
+        this.name = name;
+        this.age = age;
+        this.shoes = shoes;
+    }
+    let princes = [];
+    function arrPush(prince) {
+        princes.push(prince);
+    }
+    arrPush(new Prince('Phillip', 25, 41));
+    arrPush(new Prince('Adam', 24, 30));
+    arrPush(new Prince('Li Shang', 27, 32));
+    arrPush(new Prince('Henry', 23, 33));
+    arrPush(new Prince('Naveen', 19, 42));
     //     За допомоги циклу знайти яка попелюшка повинна бути з принцом.
+    for (const prince of princes) {
+        for (const cinderella of cinderellas) {
+            if (prince.shoes === cinderella.footSize) {
+                console.log(cinderella);
+            }
+        }
+    }
+
     //     Додатково, знайти необхідну попелюшку за допомоги функції масиву find та відповідного колбеку
-
-
-
+    for (const prince of princes) {
+        cinderellas.find(cinderella => cinderella.footSize === prince.shoes);
+    }
 
 </script>
 </body>
