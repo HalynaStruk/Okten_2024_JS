@@ -13,7 +13,31 @@
 <script>
     // - Створити функцію конструктор для об'єктів User з полями id, name, surname , email, phone
     // створити пустий масив, наповнити його 10 об'єктами new User(....)
-    //
+    function User(id, name, surname , email, phone) {
+            this.id = id,
+            this.name = name,
+            this.surname = surname,
+            this.email = email,
+            this.phone = phone
+    }
+    let users = [];
+    function array(user) {
+        users.push(user);
+    }
+
+    array(new User(1,'Anna', 'Melnyk', 'anna@gmail.com', '+38096121077'));
+    array(new User(1,'Danylo', 'Boiko', 'danylo@gmail.com', '+38096121077'));
+    array(new User(1,'Daria', 'Koval', 'daria@gmail.com', '+38096121077'));
+    array(new User(1,'Artem', 'Bondar', 'artem@gmail.com', '+38096121077'));
+    array(new User(1,'Maria', 'Tkachuk', 'maria@gmail.com', '+38096121077'));
+    array(new User(1,'Kyrylo', 'Savchuk', 'kyrylo@gmail.com', '+38096121077'));
+    array(new User(1,'Sofia', 'Kulyk', 'sofia@gmail.com', '+38096121077'));
+    array(new User(1,'Denys', 'Kostenko', 'denys@gmail.com', '+38096121077'));
+    array(new User(1,'Yana', 'Tkach', 'yana@gmail.com', '+38096121077'));
+    array(new User(1,'Dmytro', 'Kozak', 'dmytro@gmail.com', '+38096121077'));
+    console.log(users);
+
+
     // - Взяти масив з  User[] з попереднього завдання, та відфільтрувати , залишивши тільки об'єкти з парними id (filter)
     //
     // - Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)
