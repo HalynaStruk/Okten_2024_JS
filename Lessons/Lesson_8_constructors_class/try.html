@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+</head>
+<body>
+
+<script>
+    class Client {
+        constructor(id, name, surname, email, phone, order) {
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.email = email;
+            this.phone = phone;
+            this.order = order;
+        }
+
+    }
+    let clients = [];
+    function createArr(client) {
+        clients.push(client);
+    }
+    createArr(new Client(clients.length+1,'Anna', 'Melnyk', 'anna@gmail.com', '+38096121077', ['book', 'shoes', 'tablet']));
+    createArr(new Client(clients.length+1,'Danylo', 'Boiko', 'danylo@gmail.com', '+380974563212', ['butter', 'bread', 'cheese', 'tomatoes', 'cucumbers']));
+    createArr(new Client(clients.length+1,'Daria', 'Koval', 'daria@gmail.com', '+380637899345', ['water', 'coffee', 'cookies', 'sausages']));
+    createArr(new Client(clients.length+1,'Artem', 'Bondar', 'artem@gmail.com', '+380961245890', ['jeans', 'T-shirt']));
+    createArr(new Client(clients.length+1,'Maria', 'Tkachuk', 'maria@gmail.com', '+380679876643', ['apples', 'bananas', 'grapes', 'strawberries', 'pepper', 'cabbage', 'buckwheat']));
+    createArr(new Client(clients.length+1,'Kyrylo', 'Savchuk', 'kyrylo@gmail.com', '+380975456768', ['computer']));
+    createArr(new Client(clients.length+1,'Sofia', 'Kulyk', 'sofia@gmail.com', '+380964553545', ['phone', 'charger', 'headphones']));
+    createArr(new Client(clients.length+1,'Denys', 'Kostenko', 'denys@gmail.com', '+380637891234', ['book', 'vase']));
+    createArr(new Client(clients.length+1,'Yana', 'Tkach', 'yana@gmail.com', '+380970678755', ['power bank', 'batteries', 'flashlight', 'candle']));
+    createArr(new Client(clients.length+1,'Dmytro', 'Kozak', 'dmytro@gmail.com', '+380961234567', ['bread', 'cheese', 'water']));
+    console.log(clients);
+    console.log(clients.sort((client, nextClient) => client.order.length - nextClient.order.length));
+
+</script>
+</body>
+</html>

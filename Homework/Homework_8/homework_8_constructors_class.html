@@ -66,20 +66,20 @@
     function createArr(client) {
         clients.push(client);
     }
-    createArr(new Client(clients.length+1,'Anna', 'Melnyk', 'anna@gmail.com', '+38096121077', 123));
-    createArr(new Client(clients.length+1,'Danylo', 'Boiko', 'danylo@gmail.com', '+380974563212', 467));
-    createArr(new Client(clients.length+1,'Daria', 'Koval', 'daria@gmail.com', '+380637899345', 876));
-    createArr(new Client(clients.length+1,'Artem', 'Bondar', 'artem@gmail.com', '+380961245890', 45));
-    createArr(new Client(clients.length+1,'Maria', 'Tkachuk', 'maria@gmail.com', '+380679876643', 457));
-    createArr(new Client(clients.length+1,'Kyrylo', 'Savchuk', 'kyrylo@gmail.com', '+380975456768', 359));
-    createArr(new Client(clients.length+1,'Sofia', 'Kulyk', 'sofia@gmail.com', '+380964553545', 25));
-    createArr(new Client(clients.length+1,'Denys', 'Kostenko', 'denys@gmail.com', '+380637891234', 3));
-    createArr(new Client(clients.length+1,'Yana', 'Tkach', 'yana@gmail.com', '+380970678755', 78));
-    createArr(new Client(clients.length+1,'Dmytro', 'Kozak', 'dmytro@gmail.com', '+380961234567', 11));
+    createArr(new Client(clients.length+1,'Anna', 'Melnyk', 'anna@gmail.com', '+38096121077', ['book', 'shoes', 'tablet']));
+    createArr(new Client(clients.length+1,'Danylo', 'Boiko', 'danylo@gmail.com', '+380974563212', ['butter', 'bread', 'cheese', 'tomatoes', 'cucumbers']));
+    createArr(new Client(clients.length+1,'Daria', 'Koval', 'daria@gmail.com', '+380637899345', ['water', 'coffee', 'cookies', 'sausages']));
+    createArr(new Client(clients.length+1,'Artem', 'Bondar', 'artem@gmail.com', '+380961245890', ['jeans', 'T-shirt']));
+    createArr(new Client(clients.length+1,'Maria', 'Tkachuk', 'maria@gmail.com', '+380679876643', ['apples', 'bananas', 'grapes', 'strawberries', 'pepper', 'cabbage', 'buckwheat']));
+    createArr(new Client(clients.length+1,'Kyrylo', 'Savchuk', 'kyrylo@gmail.com', '+380975456768', ['computer']));
+    createArr(new Client(clients.length+1,'Sofia', 'Kulyk', 'sofia@gmail.com', '+380964553545', ['phone', 'charger', 'headphones']));
+    createArr(new Client(clients.length+1,'Denys', 'Kostenko', 'denys@gmail.com', '+380637891234', ['book', 'vase']));
+    createArr(new Client(clients.length+1,'Yana', 'Tkach', 'yana@gmail.com', '+380970678755', ['power bank', 'batteries', 'flashlight', 'candle']));
+    createArr(new Client(clients.length+1,'Dmytro', 'Kozak', 'dmytro@gmail.com', '+380961234567', ['bread', 'cheese', 'water']));
     console.log(clients);
     // - Взяти масив (Client [] з попереднього завдання).
     // Відсортувати його по кількості товарів в полі order по зростанню. (sort)
-    console.log(clients.sort((client, nextClient) => client.order - nextClient.order));
+    console.log(clients.sort((client, nextClient) => client.order.length - nextClient.order.length));
 
     // - Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями
     //  модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна.
