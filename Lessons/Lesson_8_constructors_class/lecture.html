@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+<script>
+    // --------------- constructors ---------------
+    function User(id, name) {
+        this.id = id;
+        this.name = name;
+        this.greeting = function (msg) {
+            console.log(msg + ' ' + this.name);
+        }
+    }
+    let user = new User(1, 'vasya');
+    console.log(user);
+
+    function Friend(name,surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+    let friend = new Friend('kokos', 'abrikosiv');
+
+    // --------------- call, apply, bind ---------------
+    // call і apply в одиночному варіанті заміняють контекст на новий
+    user.greeting.call(friend, 'hello');
+    user.greeting.apply(friend, ['hi']);
+    // bind робить копію функції яку далі можна використовувати скільки хочеш
+    let greetingFnCopy = user.greeting.bind(friend);
+    greetingFnCopy('pryvit');
+
+    //  --------------- Object Prototype ---------------
+    // console.log({});
+    // let user2 = {
+    //     id:1,
+    //     name: 'max'
+    // }
+    // let user3 = Object.create(user2);
+    // console.log(user3); // {}
+    // console.log(user3.id); // 1
+    // console.log(user3.name); // max
+    //
+    // user3.id = 123;
+    // console.log(user3.id); // 123, але id від user2 залишиться, просто тепер user3 буде мати свій власний id
+
+    // --------------- Class ----------------
+    class User2 {
+        constructor(id,name) {
+            this.id = id;
+            this.name = name;
+        }
+        greeting (msg) {
+            console.log(msg + ' ' + this.name);
+        } // у класах функції називаються методи
+    }
+
+    let user21 = new User2(111, 'ivan');
+    console.log(user21);
+    user21.greeting('hi');
+
+    class Dev extends User2 {
+
+    }
+
+
+</script>
+</body>
+</html>
