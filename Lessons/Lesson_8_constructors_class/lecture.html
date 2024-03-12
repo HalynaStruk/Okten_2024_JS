@@ -65,9 +65,27 @@
     console.log(user21);
     user21.greeting('hi');
 
+    // ------------- class or constructors ... extends -------------
+    // доповнює один з існуючих класів
     class Dev extends User2 {
-
+        constructor(id, name, skills) {
+            super(id, name);
+            this.skills = skills;
+        }
     }
+    let dev = new Dev(12, 'ol', ['html', 'js']);
+    console.log(dev);
+
+    function UserConstr(id,name) {
+        this.id = id;
+        this.name = name;
+    }
+    function DevExtUser(id, name, skills) {
+        UserConstr.apply(this, arguments);
+        this.skills = skills;
+    }
+
+    console.log(new DevExtUser(30, 'anna', ['js']));
 
 
 </script>
