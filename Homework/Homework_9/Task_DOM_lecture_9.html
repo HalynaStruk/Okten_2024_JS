@@ -128,8 +128,32 @@
         },
     ];
 
-    // Проітерувати його, створиши для кожного об'єкту  масиву <div class='member'> та наповнити його данними з об'єкту.
-    //     Якщо людською мовою: під кожного члена родини зробити блок та наповнити його інформацією з цього об'єкту
+    // Проітерувати його, створиши для кожного об'єкту  масиву <div class='member'>
+    // та наповнити його данними з об'єкту.
+    // Якщо людською мовою: під кожного члена родини зробити блок та наповнити його інформацією з цього об'єкту
+    for (const simpson of simpsons) {
+        let divBlock = document.createElement('div');
+        divBlock.classList.add('member');
+        document.body.appendChild(divBlock);
+        divBlock.style.display = 'flex';
+
+        let photo = document.createElement('img');
+        photo.src = simpson.photo;
+        divBlock.appendChild(photo);
+
+        let divInfo = document.createElement('div');
+        divBlock.appendChild(divInfo);
+        let h1 = document.createElement('h1');
+        h1.innerText = `${simpson.name} ${simpson.surname}`;
+        let h2 = document.createElement('h2');
+        h2.innerText = `${simpson.age} years`;
+        let p = document.createElement('p');
+        p.innerText = simpson.info;
+        divInfo.append(h1, h2, p);
+    }
+
+
+
 
     // ===========================================================================
     //     Цикл в циклі
