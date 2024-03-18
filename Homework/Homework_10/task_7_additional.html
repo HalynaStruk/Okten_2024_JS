@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<form action="/asd" name="form">
+    <input type="number" name="lines">
+    <input type="number" name="cells">
+    <input type="text" name="content">
+    <button>Create a table</button>
+</form>
+<table></table>
+<script>
+    // ==================================== Task 7 =======================================
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вміст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    //     (Додаткова частина для завдання)
+    let table = document.getElementsByTagName('table')[0];
+
+    form.onsubmit = function (e) {
+        e.preventDefault();
+
+        let line = document.createElement('tr');
+        let tr = this.lines.value;
+        console.log(+tr);
+        for (let i = 0; i < +tr; i++) {
+            table.appendChild(line);
+
+            let cells = document.createElement('td');
+            let td = this.cells.value;
+            for (let i = 0; i < +td; i++) {
+                line.appendChild(cells);
+                cells.innerText = this.content.value;
+            }
+        }
+        let a = 3;
+        for (let i = 0; i < a; i++) {
+            console.log(a[i]);
+        }
+        // let cells = document.createElement('td');
+        // let td = this.cells.value;
+        // for (let i = 0; i < +td; i++) {
+        //     line.appendChild(cells);
+        //     cells.innerText = this.content.value;
+        // }
+
+    }
+
+    // ========================= Additional task to 7th task ==============================
+    // *** (подібне було вище, але...будьте уважні в другій частині)
+    //      Створити сторінку з довільним блоком, в середині якого є значення "100грн"
+    //      при перезавантаженні сторінки до значаення додається по 10грн, але !!!
+    //      зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
+    //      При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+
+</script>
+</body>
+</html>
