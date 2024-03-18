@@ -70,26 +70,93 @@
     // Є ще сторінка sessions.html (назва довільна), при відвідуванні якої потрібно відмалювати всю інформацію
     // про відвідування сторінки index.html. Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію
 
+                // ------ Завдання виконанні у відповідних html файлах --------
 
     // ==================================== Task 4 =======================================
     //  4.Зробити масив на 100 об'єктів та дві кнопки prev next
     // При завантажені сторінки з'являються перші 10 об'єктів.
-    // При натисканні next виводяться настпні 10 об'єктів
+    // При натисканні next виводяться наступні 10 об'єктів
     // При натисканні prev виводяться попередні 10 об'єктів
+
+    let cardSuits = ['spade', 'diamond','heart', 'clubs'];
+    let values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'ace','jack','queen','king', 'joker'];
+    let color = {
+        spade: 'black',
+        diamond: 'red',
+        heart: 'red',
+        clubs: 'black'
+    };
+
+    let cards = () => {
+        let deckOfCards = [];
+        for (const cardSuit of cardSuits) {
+            for (const value of values) {
+                deckOfCards.push({cardSuit: cardSuit, value: value});
+            }
+        }
+        deckOfCards.map(card => card.cardSuit === 'diamond' || card.cardSuit === 'heart' ? card.color = 'red' : card.color = 'black');
+        return deckOfCards;
+    }
+    let deckOfCards = cards();
+    console.log(deckOfCards);
+
+    let ol = document.createElement('ol');
+    document.body.appendChild(ol);
+    let buttonPrev = document.createElement('button');
+    buttonPrev.innerText = 'previos page';
+    let buttonNext = document.createElement('button');
+    buttonNext.innerText = 'next page';
+    document.body.append(buttonPrev, buttonNext);
+
+    let start = 0;
+    let step = 10;
+    let limit = start + step;
+        for (let i = start; i < limit; i++) {
+            let li = document.createElement('li');
+            ol.appendChild(li);
+            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
+        }
+    buttonNext.onclick = function () {
+        for (let i = start; i < limit; i++) {
+            let li = document.createElement('li');
+            ol.appendChild(li);
+            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
+        }
+        start = limit;
+        limit = limit + step;
+    }
+    buttonPrev.onclick = function () {
+        for (let i = limit - 1; i >= start; i--) {
+            let li = document.createElement('li');
+            ol.appendChild(li);
+            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
+        }
+        start = limit;
+        limit = limit - step;
+    }
 
     // ==================================== Task 5 =======================================
     //  5.Створити довільний елемент з id = text та створити кнопку.
     //  Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
+     let block = document.createElement('div');
+     block.innerText = 'some text';
+     block.id = 'text';
+     let button = document.createElement('button');
+     button.innerText = 'Hide';
+     document.body.append(block, button);
+     button.onclick = function () {
+         block.style.display = 'none';
+     }
 
     // ==================================== Task 6 =======================================
     //  6.Створити інпут який приймає вік людини та кнопку яка підтверджує дію.
-    //  При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18,
+    //  При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи менше він ніж 18,
     //  та повідомити про це користувача
 
     // ==================================== Task 7 =======================================
-    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вміст ячеєк.
     //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
-    //     (Додатковачастина для завдання)
+    //     (Додаткова частина для завдання)
 
     // ========================= Additional task to 7th task ==============================
     // *** (подібне було вище, але...будьте уважні в другій частині)
