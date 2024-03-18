@@ -29,7 +29,6 @@
     <input  type="number" name="age">
     <button>send</button>
 </form>
-<h1>This page has been reloaded <span id="reloadCount"></span> times.</h1>
 <script>
     // ==================================== Task 1 ========================================
     //  1.Стоврити форму з трьома полями для name,surname,age та кнопкою.
@@ -55,12 +54,11 @@
     document.body.append(divCount);
     divCount.classList.add('block');
     divCount.innerText = '0';
-    // localStorage.setItem('counter', divCount.innerText);
 
     if (!localStorage.getItem('counter')) {
         localStorage.setItem('counter', divCount.innerText);
     } else {
-        let count = +localStorage.getItem('counter');
+        let count = parseInt(localStorage.getItem('counter'));
         count++;
         localStorage.setItem('counter', count);
     }
@@ -71,6 +69,7 @@
     // в масив sessions зберігається інформація про дату та час відвідування сторінки.
     // Є ще сторінка sessions.html (назва довільна), при відвідуванні якої потрібно відмалювати всю інформацію
     // про відвідування сторінки index.html. Інфу НЕ виводити в консоль, а побудувати дом структуру під кожну сессію
+
 
     // ==================================== Task 4 =======================================
     //  4.Зробити масив на 100 об'єктів та дві кнопки prev next
