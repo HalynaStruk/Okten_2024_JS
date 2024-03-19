@@ -30,33 +30,46 @@
     //      зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
     //      При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
 
-    // let div = document.getElementsByTagName('div')[0];
-    //
-    // function visiting() {
-    //     // let visitedArray = JSON.parse(localStorage.getItem('visitig')) || [];
-    //
-    //     let date = new Date();
-    //     let price = 100;
-    //     // div.innerText = price;
-    //     let now = date.getTime();
-    //     let lastVisited = visitedArray[visitedArray.length - 1]?.milis;
-    //     console.log(now, lastVisited);
-    //     if (now - lastVisited > 1000 * 10 || visitedArray.length === 0) {
-    //         price = price + 10;
-    //         visitedArray.push({
-    //             day: date.getDay(),
-    //             hour: date.getHours(),
-    //             minutes: date.getMinutes(),
-    //             seconds: date.getSeconds(),
-    //             price: price,
-    //             milis: date.getTime()
-    //         })
-    //     }
-    //     div.innerText = price;
-    //     localStorage.setItem('visiting', JSON.stringify(visitedArray));
+    let div = document.getElementsByTagName('div')[0];
+
+    function visiting() {
+        let visitedArray = JSON.parse(localStorage.getItem('visiting')) || [];
+
+        let date = new Date();
+        let price = 100;
+
+        let now = date.getTime();
+        let lastVisited = visitedArray[visitedArray.length - 1]?.milis;
+        // console.log(now, lastVisited);
+
+        if (now - lastVisited >  1000 * 10 || visitedArray.length === 0) {
+            price = parseInt(localStorage.getItem('visiting'));
+            price += 10;
+            localStorage.setItem('visiting', visitedArray.price);
+            visitedArray.push({
+                price: price,
+                day: date.getDay(),
+                hour: date.getHours(),
+                minutes: date.getMinutes(),
+                seconds: date.getSeconds(),
+                milis: date.getTime()
+            })
+
+        }
+        div.innerText = price;
+        localStorage.setItem('visiting', JSON.stringify(visitedArray));
+    }
+    visiting();
+
+    // if (!localStorage.getItem('counter')) {
+    //     localStorage.setItem('counter', divCount.innerText);
+    // } else {
+    //     let count = parseInt(localStorage.getItem('counter'));
+    //     count++;
+    //     localStorage.setItem('counter', count);
     // }
-    // visiting();
-    //
+    // divCount.innerText = localStorage.getItem('counter');
+
     // function visiting() {
     //     let visitedArray = JSON.parse(localStorage.getItem('visiting')) || [];
     //
