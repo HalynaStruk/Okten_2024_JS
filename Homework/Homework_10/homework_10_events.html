@@ -100,8 +100,8 @@
     let deckOfCards = cards();
     console.log(deckOfCards);
 
-    let ol = document.createElement('ol');
-    document.body.appendChild(ol);
+    let displayDiv = document.createElement('div');
+    document.body.appendChild(displayDiv);
     let buttonPrev = document.createElement('button');
     buttonPrev.innerText = 'previos page';
     let buttonNext = document.createElement('button');
@@ -110,30 +110,43 @@
 
     let start = 0;
     let step = 10;
-    let limit = start + step;
-        for (let i = start; i < limit; i++) {
-            let li = document.createElement('li');
-            ol.appendChild(li);
-            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
+
+    function displayElements() {
+        displayDiv.innerHTML = '';
+        for (let i = start; i < start + step && i < deckOfCards.length; i++) {
+            displayDiv.innerHTML += `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color} <br>`;
         }
+    }
+
     buttonNext.onclick = function () {
-        for (let i = start; i < limit; i++) {
-            let li = document.createElement('li');
-            ol.appendChild(li);
-            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
-        }
-        start = limit;
-        limit = limit + step;
+        start = start + step;
+        displayElements();
+        buttonVisibility()
     }
+
     buttonPrev.onclick = function () {
-        for (let i = limit - 1; i >= start; i--) {
-            let li = document.createElement('li');
-            ol.appendChild(li);
-            li.innerText = `cardSuit: ${deckOfCards[i].cardSuit}, value: ${deckOfCards[i].value}, color: ${deckOfCards[i].color}`;
-        }
-        start = limit;
-        limit = limit - step;
+        start = start - step;
+        displayElements();
+        buttonVisibility()
     }
+
+    function buttonVisibility() {
+
+        if (start <= 0) {
+            buttonPrev.style.display = 'none';
+        } else {
+            buttonPrev.style.display = 'inline';
+        }
+
+        if (start + step >= deckOfCards.length) {
+            buttonNext.style.display = 'none';
+        } else {
+            buttonNext.style.display = 'inline';
+        }
+    }
+    displayElements();
+    buttonVisibility();
+
 
     // ==================================== Task 5 =======================================
     //  5.Створити довільний елемент з id = text та створити кнопку.

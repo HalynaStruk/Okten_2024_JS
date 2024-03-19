@@ -7,9 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <style>
+        .block{
+            border: 4px solid grey;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            color: cornflowerblue;
+        }
+    </style>
 </head>
 <body>
-
+<div class="block"></div>
 <script>
     // ========================= Additional Task 8 ==============================
     // *** (подібне було вище, але...будьте уважні в другій частині)
@@ -17,6 +29,84 @@
     //      при перезавантаженні сторінки до значаення додається по 10грн, але !!!
     //      зміна ціни відбувається тільки на перезавантаження, які відбулись пізніше ніж 10 секунд після попереднього.
     //      При перезавантаженні, яке відбулось раніше ніж минуло 10 секунд - нічого не відбувається
+
+    // let div = document.getElementsByTagName('div')[0];
+    //
+    // function visiting() {
+    //     // let visitedArray = JSON.parse(localStorage.getItem('visitig')) || [];
+    //
+    //     let date = new Date();
+    //     let price = 100;
+    //     // div.innerText = price;
+    //     let now = date.getTime();
+    //     let lastVisited = visitedArray[visitedArray.length - 1]?.milis;
+    //     console.log(now, lastVisited);
+    //     if (now - lastVisited > 1000 * 10 || visitedArray.length === 0) {
+    //         price = price + 10;
+    //         visitedArray.push({
+    //             day: date.getDay(),
+    //             hour: date.getHours(),
+    //             minutes: date.getMinutes(),
+    //             seconds: date.getSeconds(),
+    //             price: price,
+    //             milis: date.getTime()
+    //         })
+    //     }
+    //     div.innerText = price;
+    //     localStorage.setItem('visiting', JSON.stringify(visitedArray));
+    // }
+    // visiting();
+    //
+    // function visiting() {
+    //     let visitedArray = JSON.parse(localStorage.getItem('visiting')) || [];
+    //
+    //     let date = new Date();
+    //     let price = 100;
+    //     // div.innerText = price;
+    //     let now = date.getTime();
+    //     let lastVisited = visitedArray[visitedArray.length - 1]?.milis;
+    //     console.log(now, lastVisited);
+    //     if (now - lastVisited > 1000 * 10 || visitedArray.length === 0) {
+    //         price = price + 10;
+    //         visitedArray.push({
+    //             day: date.getDay(),
+    //             hour: date.getHours(),
+    //             minutes: date.getMinutes(),
+    //             seconds: date.getSeconds(),
+    //             price: price,
+    //             milis: date.getTime()
+    //         })
+    //     }
+    //     div.innerText = price;
+    //     // localStorage.setItem('visiting', JSON.stringify(visitedArray));
+    // }
+
+    // function saveVisit() {
+    //     let arrayOfSession = JSON.parse(localStorage.getItem('sessions')) || [];
+    //
+    //     let date = new Date();
+    //     let price = 100;
+    //
+    //     let now = date.getTime();
+    //     let lastSaved =  arrayOfSession[arrayOfSession.length - 1]?.milis;
+    //     console.log(now, lastSaved);
+    //
+    //     if (now - lastSaved > 1000 * 10 || arrayOfSession.length === 0) {
+    //         price = price + 10;
+    //         arrayOfSession.push({
+    //                         day: date.getDay(),
+    //                         hour: date.getHours(),
+    //                         minutes: date.getMinutes(),
+    //                         seconds: date.getSeconds(),
+    //                         price: price,
+    //                         milis: date.getTime()
+    //         });
+    //     }
+    //     localStorage.setItem('sessions', JSON.stringify(arrayOfSession));
+    // }
+    // saveVisit();
+
+
 </script>
 </body>
 </html>
