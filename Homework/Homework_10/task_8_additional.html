@@ -56,7 +56,7 @@
             })
         }
         localStorage.setItem('visiting', JSON.stringify(visitedArray));
-        div.innerText = price;
+        div.innerText = visitedArray[visitedArray.length-1].price;
     }
     visiting();
 
