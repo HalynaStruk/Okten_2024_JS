@@ -44,6 +44,7 @@
             for (let i = 0; i < visitedArray.length; i++) {
                 let lastPrice = visitedArray[visitedArray.length-1].price
                 price = lastPrice;
+                // div.innerText = visitedArray[visitedArray.length-1].price;
             }
             price += 10;
             visitedArray.push({
@@ -55,8 +56,12 @@
                 milis: date.getTime()
             })
         }
+        // else {
+        //     div.innerText = visitedArray[visitedArray.length-1].price;
+        // }
         localStorage.setItem('visiting', JSON.stringify(visitedArray));
-        div.innerText = visitedArray[visitedArray.length-1].price;
+
+        div.innerHTML = JSON.parse(localStorage.getItem('visiting'))[visitedArray.length-1].price;
     }
     visiting();
 
