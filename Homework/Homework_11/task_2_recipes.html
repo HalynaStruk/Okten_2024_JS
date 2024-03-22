@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #recipes{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .recipe{
+            border: 2px solid grey;
+            padding: 15px;
+        }
+        .recipe img{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="recipes"></div>
+<script>
+    // ==================================== Task 2 ========================================
+    // 2. взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти.
+    // Інгредієнти повинні бути список під час відображення.
+
+    let URL = 'https://dummyjson.com/recipes/';
+
+    function getProducts(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(answer => {
+                console.log(answer);
+                console.log(answer.recipes);
+                displayCarts(answer.recipes);
+            })
+    }
+
+    getProducts(URL);
+
+    function displayCarts(recipes) {
+        let block = document.getElementById('recipes');
+        block.innerHTML = '';
+
+        for (const recipe of recipes) {
+            let div = document.createElement('div');
+            div.classList.add('recipe');
+            block.appendChild(div);
+
+            let h1 = document.createElement('h1');
+            h1.innerText = `${recipe.name}`;
+
+            let h3 = document.createElement('h3');
+            h3.innerHTML = `rating: ${recipe.rating} <br> By userId: ${recipe.userId} <br> Review count: ${recipe.reviewCount}`;
+
+            let h4 = document.createElement('h4');
+            h4.innerText = `meal type: ${recipe.mealType}  |  cuisine: ${recipe.cuisine}  |  difficulty: ${recipe.difficulty}`;
+
+            let img = document.createElement('img');
+            img.src = recipe.image;
+
+            let p = document.createElement('p');
+            p.innerHTML = `<b>Calories per serving:</b> ${recipe.caloriesPerServing}   |   <b>Cook time minutes:</b> ${recipe.cookTimeMinutes}   |   <b>Preparing time minutes:</b> ${recipe.prepTimeMinutes}   |   <b>Servings:</b> ${recipe.servings}`;
+
+            div.append(h1, h3, h4, img, p);
+
+            let ingredients = recipe.ingredients;
+            let ul = document.createElement('ul');
+            ul.innerHTML = '<b>Ingredients:</b>';
+            for (const ingredient of ingredients) {
+                let li = document.createElement('li');
+                ul.appendChild(li);
+                li.innerText = ingredient;
+            }
+
+            let instructions = recipe.instructions;
+            let ol = document.createElement('ol');
+            ol.innerHTML = '<b>Instructions:</b>';
+            for (const instruction of instructions) {
+                let li = document.createElement('li');
+                ol.appendChild(li);
+                li.innerText = instructions;
+            }
+
+            let tags = recipe.tags;
+            let p2 = document.createElement('p');
+            for (const tag of tags) {
+                p2.innerHTML = `#${tag}`; // тут виводить тільки перший, не розумію чому так
+                console.log(tag); // тут видить всі теги
+            }
+
+            div.append(ul, ol, p2);
+        }
+
+    }
+</script>
+</body>
+</html>
