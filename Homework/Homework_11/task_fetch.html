@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<div id="carts"></div>
+<script>
+    // ==================================== Task 1 ========================================
+    // 1. взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини.
+    // Відобразити всі поля кожної корзини.
+
+    let URL = 'https://dummyjson.com/carts/';
+
+    function getProducts(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(answer => {
+                console.log(answer);
+                console.log(answer.carts);
+                displayCarts(answer.carts);
+            })
+    }
+    getProducts(URL);
+
+    function displayCarts(carts) {
+        let block = document.getElementById('carts');
+        block.innerHTML = '';
+
+        for (const cart of carts) {
+            let div = document.createElement('div');
+            div.classList.add('cart');
+
+            let h3 = document.createElement('h3');
+            let p = document.createElement('p');
+            let ol = document.createElement('ol');
+
+            h3.innerText = `userId: ${cart.userId} - total: ${cart.total} (discounted total: ${cart.discountedTotal})`;
+            p.innerText = `${cart.totalProducts} - types of products, a total of ${cart.totalQuantity}`;
+
+            console.log(cart.products);
+            let productsOfUser = cart.products;
+            for (const product of productsOfUser) {
+                let li = document.createElement('li');
+                let p1 = document.createElement('p');
+                let p2 = document.createElement('p');
+                let img = document.createElement('img');
+
+                li.innerText = `${product.title} - price: ${product.price} $`;
+                p1.innerText = `quantity: ${product.quantity} - total: ${product.total} $`;
+                p2.innerText =`discount percentage: ${product.discountPercentage} - discounted price: ${product.discountedPrice}`
+                img.src = product.thumbnail;
+                img.style.width = '75px';
+
+                li.append(p1, p2, img);
+                ol.appendChild(li);
+            }
+
+            div.append(h3, p, ol);
+            block.appendChild(div);
+
+        }
+    }
+
+    // const userId = new URL(location.href).searchParams.get('id');
+    // console.log(userId);
+    //
+    // let baseURL = "https://rickandmortyapi.com/api/character/"+userId;
+
+    // ==================================== Task 2 ========================================
+    // 2. взяти https://dummyjson.com/docs/recipes та вивести інформацію про всі рецепти.
+    // Інгредієнти повинні бути список під час відображення.
+    //
+    // ==================================== Task 3 ========================================
+
+                    // ------ ЗАВДАННЯ ВИКОНАНО У  users.html --------
+
+    // 3. зробити файл users.html
+    // з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+    // вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+    // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
+    // отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   де ХХХ - айді користувача)
+
+</script>
+</body>
+</html>
