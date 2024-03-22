@@ -9,13 +9,7 @@
 
 </head>
 <body>
-<div id="group">
-    <h1>Users</h1>
-    <div id="bntGroup">
-        <button id="prevBtn">Previous page</button>
-        <button id="nextBtn">Next page</button>
-    </div>
-</div>
+<h1>Users</h1>
 <div id="users"></div>
 <script>
     // ==================================== Task 3 ========================================
@@ -26,7 +20,7 @@
     // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
     // отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   де ХХХ - айді користувача)
 
-    let URL = 'http://jsonplaceholder.typicode.com/users/';
+    const URL = 'http://jsonplaceholder.typicode.com/users/';
 
     function getUsers(url) {
         fetch(url)
@@ -48,15 +42,24 @@
             div.classList.add('user');
             conteiner.appendChild(div);
 
-            let h1 = document.createElement('h1');
-            h1.innerText = `${user.id}. ${user.name}`;
+            let h2 = document.createElement('h2');
+            h2.innerText = `${user.id}. ${user.name}`;
 
-
-            div.appendChild(h1);
+            let a = document.createElement('a');
+            a.innerText = 'details about user';
+            a.href = 'user-details.html?id='+user.id;
+            div.append(h2, a);
 
         }
 
     }
+
+
+    // img.addEventListener('click', () => {
+    //     location.href = 'person.html?id='+ person.id;
+    //     console.log(person.id);
+    // })
+
 
 </script>
 </body>
