@@ -9,7 +9,7 @@
 
 </head>
 <body>
-
+<button id="btn">CLC</button>
 <script>
 
     // console.log('asd');
@@ -82,15 +82,32 @@
     // fetch вже має підкапотом асинхронна операція
 
     // Event Loop
-    console.log(1);
+    console.log(1); // синхронна операція
     setTimeout(() => {
         console.log(2);
-    }, 1000);
-    console.log(3);
+    }, 1000);       // асинхронна операція
+    console.log(3); // синхронна операція
     // спершу виведеться 1 -> 3 -> 2
 
-    // Async with CB
-    // Promise
+    // всі цикли є синхронні КРІМ -> for ... of (з коробки підтримує асинхронність) та map (можна зробити асинхнним)
+
+    document.getElementById('btn')
+        .onclick = () => {
+        console.log('clc');
+    } // асинхронна операція
+
+    // багато синхронних операцій сприяють підвисанню браузера, тому краще робити асинхронні операції
+
+    // Async with CB 1:02
+
+    let money = 0;
+
+    function clearHouse(isJobDone) {
+
+
+    }
+
+    // Promise це micro task
     // Promise race
     // Promise all
     // Async Await
