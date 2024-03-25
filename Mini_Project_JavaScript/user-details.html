@@ -7,12 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User Details</title>
 
+    <style>
+        body{
+            background: rgb(53,53,80);
+            background: radial-gradient(circle, rgba(53,53,80,1) 0%, rgba(25,25,27,1) 100%);
+        }
+        .block{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+        }
+        a{
+            text-decoration: none;
+            color: gainsboro;
+        }
+        #userDetails{
+            color: gainsboro;
+        }
+        .block button{
+            width: 24vw;
+            height: 6vh;
+            background-color: #5354d4;
+            border: 2px solid #5354d4;
+            border-radius: 50px;
+            color: white;
+            margin-top: 15px;
+        }
+
+    </style>
 </head>
 <body>
 <!--Стилизація проєкта:-->
 <!-- - user-details.html - блок з інфою про user зверху сторінки. Кнопка нижче, на 90% ширини сторінки, по центру.-->
 <!--блоки з короткою іфною про post - в ряд по 5 .-->
-<h1>User Details</h1>
+
+<p><a href="index.html" style="color: white">Back to Users</a></p>
+
+<div class="block">
+    <h1 style="color: white">User Details</h1>
+    <div id="userDetails"></div>
+    <button>Post of current user</button>
+</div>
 <script>
     // На сторінці user-details.html:
     // 4. Вивести всю, без виключення, інформацію про об'єкт user на який клікнули
@@ -20,6 +56,68 @@
     // (для отримання постів використовуйте endpoint https://jsonplaceholder.typicode.com/users/USER_ID/posts)
     // 6. Кожному посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html,
     // котра має детальну інфу про поточний пост.
+    console.log(location);
+    const userId = new URL(location.href).searchParams.get('id');
+
+    const userURL = 'https://jsonplaceholder.typicode.com/users/'+userId;
+
+    fetch(userURL)
+        .then(response => response.json())
+        .then(user => {
+            console.log(user);
+            let div = document.getElementById('userDetails');
+
+            let h3 = document.createElement('h3');
+            h3.innerText = `${user.id}. ${user.name}`;
+
+            let pInfo = document.createElement('p');
+            pInfo.innerHTML = '<b>Info:</b>';
+
+            let p = document.createElement('p');
+            p.innerHTML = `username: ${user.username} <br> website: <a href="${user.website}">${user.website}</a> <br> email: <a href="${user.email}">${user.email}</a> <br>phone: ${user.phone}`;
+
+            div.append(h3,pInfo,p);
+
+            function display(obj, key, text) {
+                if (key === text) {
+                    let p = document.createElement('p');
+                    p.innerHTML = `${text}: ${obj[key]}`;
+                    p.style.margin = 0;
+                    div.appendChild(p);
+                }
+            }
+
+            let pAddress = document.createElement('p');
+            pAddress.innerHTML = '<b>Address:</b>';
+            div.appendChild(pAddress);
+
+            let address = user.address;
+            for (const key in address) {
+
+                display(address, key, 'city');
+                display(address, key, 'street');
+                display(address, key, 'suite');
+                display(address, key, 'zipcode');
+            }
+
+            let geo = address.geo;
+            for (const geoKey in geo) {
+                display(geo, geoKey, 'lat');
+                display(geo, geoKey, 'lng');
+            }
+
+            let company = user.company;
+            let pCompany = document.createElement('p');
+            pCompany.innerHTML = '<b>Company:</b>';
+            div.appendChild(pCompany);
+
+            for (const companyKey in company) {
+                display(company, companyKey, 'name');
+                display(company, companyKey, 'catchPhrase');
+                display(company, companyKey, 'bs');
+            }
+
+        })
 
 </script>
 </body>
