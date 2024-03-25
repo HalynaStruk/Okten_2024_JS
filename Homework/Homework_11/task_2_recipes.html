@@ -35,8 +35,8 @@
         fetch(url)
             .then(response => response.json())
             .then(answer => {
-                console.log(answer);
-                console.log(answer.recipes);
+                // console.log(answer);
+                // console.log(answer.recipes);
                 displayCarts(answer.recipes);
             })
     }
@@ -84,17 +84,23 @@
             for (const instruction of instructions) {
                 let li = document.createElement('li');
                 ol.appendChild(li);
-                li.innerText = instructions;
+                li.innerText = instruction;
             }
+
+            div.append(ul, ol);
 
             let tags = recipe.tags;
-            let p2 = document.createElement('p');
-            for (const tag of tags) {
-                p2.innerHTML = `#${tag}`; // тут виводить тільки перший, не розумію чому так
-                console.log(tag); // тут видить всі теги
+            console.log(tags);
+            for (let i = 0; i < tags.length; i++) {
+                let a = document.createElement('a');
+                console.log(tags[i]);
+                a.href = `${tags[i]}`;
+                a.innerHTML = `#${tags[i]} `;
+                a.style.textDecoration = 'none';
+                a.style.color = 'black';
+                div.appendChild(a);
             }
 
-            div.append(ul, ol, p2);
         }
 
     }
