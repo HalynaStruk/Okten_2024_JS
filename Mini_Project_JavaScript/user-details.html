@@ -26,13 +26,19 @@
             color: gainsboro;
         }
         .block button{
-            width: 24vw;
+            width: 90vw;
             height: 6vh;
             background-color: #5354d4;
             border: 2px solid #5354d4;
             border-radius: 50px;
             color: white;
-            margin-top: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        #posts{
+            display: grid;
+            grid-template-columns: 14vw 14vw 14vw 14vw 14vw;
+            color: gainsboro;
         }
 
     </style>
@@ -47,7 +53,8 @@
 <div class="block">
     <h1 style="color: white">User Details</h1>
     <div id="userDetails"></div>
-    <button>Post of current user</button>
+    <button id="btn">Post of current user</button>
+    <div id="posts"></div>
 </div>
 <script>
     // На сторінці user-details.html:
@@ -64,7 +71,7 @@
     fetch(userURL)
         .then(response => response.json())
         .then(user => {
-            console.log(user);
+
             let div = document.getElementById('userDetails');
 
             let h3 = document.createElement('h3');
@@ -118,6 +125,27 @@
             }
 
         })
+
+    const postsURL = userURL+'/posts';
+
+    let button = document.getElementById('btn');
+
+    button.addEventListener('click', () => {
+    fetch(postsURL)
+        .then(response => response.json())
+        .then(posts => {
+
+            let divPosts = document.getElementById('posts');
+
+            for (const post of posts) {
+                console.log(post.title);
+                let div = document.createElement('div');
+                div.classList.add('post');
+                div.innerHTML = post.title;
+                divPosts.appendChild(div);
+            }
+        })
+    })
 
 </script>
 </body>
