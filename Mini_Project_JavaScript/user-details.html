@@ -25,7 +25,7 @@
         #userDetails{
             color: gainsboro;
         }
-        .block button{
+        #btn{
             width: 90vw;
             height: 6vh;
             background-color: #5354d4;
@@ -42,11 +42,21 @@
             color: gainsboro;
         }
         .post{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             box-sizing: border-box;
             padding: 6px;
             border: 2px solid grey;
-            height: 10vh;
+            height: 15vh;
             font-size: 2vh;
+        }
+        .details{
+            width: 75%;
+            height: 20%;
+            border: 2px solid ghostwhite;
+            border-radius: 50px;
         }
 
     </style>
@@ -146,11 +156,20 @@
             let divPosts = document.getElementById('posts');
 
             for (const post of posts) {
-                console.log(post.title);
+
                 let div = document.createElement('div');
                 div.classList.add('post');
                 div.innerHTML = post.title;
                 divPosts.appendChild(div);
+
+                let button = document.createElement('button');
+                button.classList.add('details');
+                button.innerText = 'more about post';
+                div.appendChild(button);
+
+                button.addEventListener('click', () => {
+                    location.href = 'post-details.html?id='+post.id;
+                })
             }
         })
     })
