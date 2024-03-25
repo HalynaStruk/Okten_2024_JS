@@ -10,12 +10,14 @@
 </head>
 <body>
 <!--Стилизація проєкта:-->
-<!-- - index.html - всі блоки з user - по 2 в рядок. кнопки/посилвння розташувати під інформацією про user.-->
+<!-- - index.html - всі блоки з user - по 2 в рядок. кнопки/посилання розташувати під інформацією про user.-->
 <!-- - user-details.html - блок з інфою про user зверху сторінки. Кнопка нижче, на 90% ширини сторінки, по центру.-->
 <!--блоки з короткою іфною про post - в ряд по 5 .-->
 <!-- - post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.-->
 <!--Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки-->
 <!--(дати фон. марджини і тд)-->
+<h1>Users:</h1>
+<div id="block"></div>
 <script>
     // В index.html
     // 1 отримати масив об'єктів з endpoint`а https://jsonplaceholder.typicode.com/users
@@ -23,7 +25,36 @@
     // 3 Додати кожному блоку кнопку/посилання , при кліку на яку відбувається перехід  на сторінку user-details.html,
     // котра має детальну інфорацію про об'єкт на який клікнули
 
+    const URL = 'https://jsonplaceholder.typicode.com/users';
 
+    function getUsers(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data);
+                displayUsers(data);
+            });
+    }
+
+    getUsers(URL);
+
+    function displayUsers(users) {
+        let block = document.getElementById('block');
+
+        for (const user of users) {
+
+            let div = document.createElement('div');
+            block.appendChild(div);
+
+            let h3 = document.createElement('h3');
+            let button = document.createElement('button');
+            h3.innerText = `${user.id}. ${user.name}`;
+            button.innerText = 'Details';
+
+            div.append(h3, button);
+        }
+
+    }
 
 </script>
 </body>
