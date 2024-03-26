@@ -40,6 +40,7 @@
             grid-template-columns: 16vw 16vw 16vw 16vw 16vw;
             gap: 2vw;
             color: gainsboro;
+
         }
         .post{
             display: flex;
@@ -58,7 +59,9 @@
             border: 2px solid ghostwhite;
             border-radius: 50px;
         }
-
+        .toggle{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -70,9 +73,15 @@
 
 <div class="block">
     <h1 style="color: white">User Details</h1>
-    <div id="userDetails"></div>
+    <div id="userDetails">
+        <div id="info"></div>
+        <div id="address"></div>
+        <div id="company"></div>
+    </div>
     <button id="btn">Post of current user</button>
+    <div class="toggle">
     <div id="posts"></div>
+    </div>
 </div>
 <script>
     // На сторінці user-details.html:
@@ -154,7 +163,7 @@
         .then(posts => {
 
             let divPosts = document.getElementById('posts');
-
+            divPosts.innerText = '';
             for (const post of posts) {
 
                 let div = document.createElement('div');
@@ -164,7 +173,7 @@
 
                 let button = document.createElement('button');
                 button.classList.add('details');
-                button.innerText = 'more about post';
+                button.innerText = 'details';
                 div.appendChild(button);
 
                 button.addEventListener('click', () => {
@@ -173,6 +182,16 @@
             }
         })
     })
+
+    button.addEventListener('click', () => {
+        let toggle = document.getElementsByClassName('toggle')[0];
+        if (toggle.style.display === 'none') {
+            toggle.style.display = 'block';
+        } else {
+            toggle.style.display = 'none';
+        }
+    })
+
 
 </script>
 </body>
