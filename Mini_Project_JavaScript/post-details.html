@@ -13,13 +13,12 @@
             background: radial-gradient(circle, rgba(53,53,80,1) 0%, rgba(25,25,27,1) 100%);
             display: flex;
             flex-direction: column;
-            /*justify-content: center;*/
             align-items: center;
         }
-        #link{
-            display: flex;
-            justify-content: space-between;
-        }
+        /*.link{*/
+        /*    display: flex;*/
+        /*    justify-content: space-between;*/
+        /*}*/
         a{
             text-decoration: none;
             color: grey;
@@ -74,10 +73,10 @@
 <!--Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки-->
 <!--(дати фон. марджини і тд)-->
 
-<div id="link">
-    <p><a href='user-details.html?id=1'>back to User details</a></p>
-    <p><a href="index.html">back to all Users</a></p>
-</div>
+<!--<div class="link">-->
+<!--    <p><a href='user-details.html?id=1'>back to User details</a></p>-->
+<!--    <p><a href="index.html">back to all Users</a></p>-->
+<!--</div>-->
 <h1>Post details</h1>
 <div id="details">
     <h3 id="info"></h3>
@@ -94,6 +93,7 @@
     // 8. Нижчє інформаці про пост, вивести всі коментарі поточного поста
     // (endpoint  - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 
+    let a = 2;
     const postId = new URL(location.href).searchParams.get('id');
 
     const userPostsURL = 'https://jsonplaceholder.typicode.com/posts/'+postId;
