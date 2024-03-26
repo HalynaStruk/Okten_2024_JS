@@ -20,6 +20,10 @@
             display: flex;
             justify-content: space-between;
         }
+        a{
+            text-decoration: none;
+            color: grey;
+        }
         h1{
             color: white;
         }
@@ -44,6 +48,23 @@
             border-radius: 20px;
             margin-top: 15px;
         }
+        #comments{
+            display: grid;
+            grid-template-columns: 20vw 20vw 20vw 20vw;
+            gap: 5vw;
+            margin-top: 30px;
+        }
+        .comment{
+            height: 50vh;
+            color: gainsboro;
+            box-sizing: border-box;
+            border: 2px solid #5354d4;
+            border-radius: 20px;
+            padding: 8px;
+        }
+        .toggle{
+            display: none;
+        }
     </style>
 
 </head>
@@ -53,10 +74,10 @@
 <!--Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки-->
 <!--(дати фон. марджини і тд)-->
 
-<!--<div id="link">-->
-<!--    <a href="user-details.html">back to User details</a>-->
-<!--    <a href="index.html">back to all Users</a>-->
-<!--</div>-->
+<div id="link">
+    <p><a href='user-details.html?id=1'>back to User details</a></p>
+    <p><a href="index.html">back to all Users</a></p>
+</div>
 <h1>Post details</h1>
 <div id="details">
     <h3 id="info"></h3>
@@ -64,8 +85,8 @@
     <p id="content"></p>
     <button id="btn">comments</button>
 </div>
-<div id="comments">
-
+<div  class="toggle">
+    <div id="comments"></div>
 </div>
 <script>
     // На сторінці post-details.html:
@@ -80,7 +101,7 @@
     fetch(userPostsURL)
         .then(response => response.json())
         .then(post =>{
-            console.log(post);
+
             let info = document.getElementById('info');
             info.innerText = `Post id: ${post.id} by userId: ${post.userId}`;
 
@@ -93,12 +114,46 @@
         })
 
     const commentsURL = userPostsURL+'/comments';
-    console.log(commentsURL);
+
     let button = document.getElementById('btn');
+
     button.addEventListener('click', () => {
         let commentsDiv = document.getElementById('comments');
+        commentsDiv.innerText = '';
+        fetch(commentsURL)
+            .then(response => response.json())
+            .then(comments => {
+
+                for (const comment of comments) {
+                    let div = document.createElement('div');
+                    div.classList.add('comment');
+                    commentsDiv.appendChild(div);
+
+                    let h4 = document.createElement('h4');
+                    h4.innerText = `comment id: ${comment.id} to postId: ${comment.postId}`;
+
+                    let h5 = document.createElement('h5');
+                    h5.innerHTML = `<em>email:</em> ${comment.email} <br> <em>name:</em> ${comment.name}`;
+
+                    let p = document.createElement('p');
+                    p.innerText = comment.body;
+
+                    div.append(h4, h5, p);
+                }
+            })
 
     })
+
+    button.addEventListener('click', () => {
+        let toggle = document.getElementsByClassName('toggle')[0];
+        console.log(toggle);
+        if (toggle.style.display === 'none') {
+            toggle.style.display = 'block';
+        } else {
+            toggle.style.display = 'none';
+        }
+    })
+
 
 </script>
 </body>
