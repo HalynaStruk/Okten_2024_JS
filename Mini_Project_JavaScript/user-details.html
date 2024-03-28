@@ -90,7 +90,7 @@
     // (для отримання постів використовуйте endpoint https://jsonplaceholder.typicode.com/users/USER_ID/posts)
     // 6. Кожному посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html,
     // котра має детальну інфу про поточний пост.
-    console.log(location);
+
     const userId = new URL(location.href).searchParams.get('id');
 
     const userURL = 'https://jsonplaceholder.typicode.com/users/'+userId;

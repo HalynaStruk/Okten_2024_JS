@@ -103,126 +103,49 @@
 
     const userPostsURL = 'https://jsonplaceholder.typicode.com/posts/'+postId;
 
-    fetch(userPostsURL)
-        .then(response => response.json())
-        .then(post =>{
-
-            let info = document.getElementById('info');
-            info.innerText = `Post id: ${post.id} by userId: ${post.userId}`;
-
-            let title = document.getElementById('title');
-            title.innerText = post.title;
-
-            let content = document.getElementById('content');
-            content.innerText = post.body;
-
-        })
-
-    const commentsURL = userPostsURL+'/comments';
-
-    let button = document.getElementById('btn');
-
-    button.addEventListener('click', () => {
-        let commentsDiv = document.getElementById('comments');
-        commentsDiv.innerText = '';
-        fetch(commentsURL)
-            .then(response => response.json())
-            .then(comments => {
-
-                for (const comment of comments) {
-                    let div = document.createElement('div');
-                    div.classList.add('comment');
-                    commentsDiv.appendChild(div);
-
-                    let h4 = document.createElement('h4');
-                    h4.innerText = `comment id: ${comment.id} to postId: ${comment.postId}`;
-
-                    let h5 = document.createElement('h5');
-                    h5.innerHTML = `<em>email:</em> ${comment.email} <br> <em>name:</em> ${comment.name}`;
-
-                    let p = document.createElement('p');
-                    p.innerText = comment.body;
-
-                    div.append(h4, h5, p);
-                }
-            })
-
-    })
-
-    button.addEventListener('click', () => {
-        let toggle = document.getElementsByClassName('toggle')[0];
-
-        if (toggle.style.display === 'none') {
-            toggle.style.display = 'block';
-        } else {
-            toggle.style.display = 'none';
-        }
-    })
-
-
-    // function getPostDetails(url) {
-    //     fetch(url)
-    //         .then(response => response.json())
-    //         .then(data =>{
-    //             displayPost(data);
-    //         });
-    // }
-    // getPostDetails(userPostsURL);
+    // fetch(userPostsURL)
+    //     .then(response => response.json())
+    //     .then(post =>{
     //
-    // function displayPost(post) {
-    //     let info = document.getElementById('info');
-    //     info.innerText = `Post id: ${post.id} by userId: ${post.userId}`;
+    //         let info = document.getElementById('info');
+    //         info.innerText = `Post id: ${post.id} by userId: ${post.userId}`;
     //
-    //     let title = document.getElementById('title');
-    //     title.innerText = post.title;
+    //         let title = document.getElementById('title');
+    //         title.innerText = post.title;
     //
-    //     let content = document.getElementById('content');
-    //     content.innerText = post.body;
-    // }
+    //         let content = document.getElementById('content');
+    //         content.innerText = post.body;
     //
+    //     })
+    //
+    // const commentsURL = userPostsURL+'/comments';
     //
     // let button = document.getElementById('btn');
-    // const commentsURL = userPostsURL+'/comments';
-    // function getComments(url) {
-    //     fetch(url)
-    //         .then(response => response.json())
-    //         .then(data =>{
-    //             button.addEventListener('click', () => {
-    //                 displayComments(data);
-    //                 console.log(data);
-    //             })
     //
-    //         });
-    // }
-    // getComments(commentsURL);
-    // // button.addEventListener('click', () => {
-    // //     displayComments(data);
-    // //     console.log(data);
-    // // })
-    //
-    //
-    // function displayComments(comments) {
+    // button.addEventListener('click', () => {
     //     let commentsDiv = document.getElementById('comments');
     //     commentsDiv.innerText = '';
-    //     for (const comment of comments) {
-    //         let div = document.createElement('div');
-    //         div.classList.add('comment');
-    //         commentsDiv.appendChild(div);
+    //     fetch(commentsURL)
+    //         .then(response => response.json())
+    //         .then(comments => {
     //
-    //         let h4 = document.createElement('h4');
-    //         h4.innerText = `comment id: ${comment.id} to postId: ${comment.postId}`;
+    //             for (const comment of comments) {
+    //                 let div = document.createElement('div');
+    //                 div.classList.add('comment');
+    //                 commentsDiv.appendChild(div);
     //
-    //         let h5 = document.createElement('h5');
-    //         h5.innerHTML = `<em>email:</em> ${comment.email} <br> <em>name:</em> ${comment.name}`;
+    //                 let h4 = document.createElement('h4');
+    //                 h4.innerText = `comment id: ${comment.id} to postId: ${comment.postId}`;
     //
-    //         let p = document.createElement('p');
-    //         p.innerText = comment.body;
+    //                 let h5 = document.createElement('h5');
+    //                 h5.innerHTML = `<em>email:</em> ${comment.email} <br> <em>name:</em> ${comment.name}`;
     //
-    //         div.append(h4, h5, p);
-    //     }
-    // }
-    // button.addEventListener('click', () => {
+    //                 let p = document.createElement('p');
+    //                 p.innerText = comment.body;
     //
+    //                 div.append(h4, h5, p);
+    //             }
+    //         })
     //
     // })
     //
@@ -235,6 +158,74 @@
     //         toggle.style.display = 'none';
     //     }
     // })
+
+
+    function getPostDetails(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data =>{
+                displayPost(data);
+            });
+    }
+    getPostDetails(userPostsURL);
+
+    function displayPost(post) {
+        let info = document.getElementById('info');
+        info.innerText = `Post id: ${post.id} by userId: ${post.userId}`;
+
+        let title = document.getElementById('title');
+        title.innerText = post.title;
+
+        let content = document.getElementById('content');
+        content.innerText = post.body;
+    }
+
+
+    const commentsURL = userPostsURL+'/comments';
+
+    let btn = document.getElementById('btn');
+    let toggle = document.getElementsByClassName('toggle')[0];
+
+    function getComments(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data =>{
+                btn.addEventListener('click', () => {
+                    if (toggle.style.display === 'none') {
+                        toggle.style.display = 'block';
+                        displayComments(data);
+                        console.log("Button clicked");
+                    } else {
+                        toggle.style.display = 'none';
+                    }
+                })
+            })
+    }
+
+    getComments(commentsURL);
+
+
+    function displayComments(comments) {
+        let commentsDiv = document.getElementById('comments');
+        commentsDiv.innerText = '';
+        for (const comment of comments) {
+            let div = document.createElement('div');
+            div.classList.add('comment');
+            commentsDiv.appendChild(div);
+
+            let h4 = document.createElement('h4');
+            h4.innerText = `comment id: ${comment.id} to postId: ${comment.postId}`;
+
+            let h5 = document.createElement('h5');
+            h5.innerHTML = `<em>email:</em> ${comment.email} <br> <em>name:</em> ${comment.name}`;
+
+            let p = document.createElement('p');
+            p.innerText = comment.body;
+
+            div.append(h4, h5, p);
+        }
+    }
+
 
 </script>
 </body>
