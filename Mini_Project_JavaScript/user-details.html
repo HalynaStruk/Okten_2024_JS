@@ -177,7 +177,7 @@
                 div.appendChild(button);
 
                 button.addEventListener('click', () => {
-                    location.href = 'post-details.html?id='+post.id;
+                    location.href = 'post-details.html?idPost='+encodeURIComponent(post.id)+"&idUser="+encodeURIComponent(userId);
                 })
             }
         })
