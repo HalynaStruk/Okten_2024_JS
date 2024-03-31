@@ -192,7 +192,7 @@
 
     document.getElementById('btn').addEventListener('click', () => {
 
-        const computedStyle = window.getComputedStyle(toggle);
+        const computedStyle = getComputedStyle(toggle);
         if (computedStyle.display === 'none') {
             toggle.style.display = 'block';
             getPosts(postsURL);

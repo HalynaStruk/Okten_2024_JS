@@ -137,7 +137,7 @@
     let toggle = document.getElementsByClassName('toggle')[0];
 
     document.getElementById('btn').addEventListener('click', () => {
-        const computedStyle = window.getComputedStyle(toggle);
+        const computedStyle = getComputedStyle(toggle);
         if (computedStyle.display === 'none') {
             toggle.style.display = 'block';
             getComments(commentsURL);
