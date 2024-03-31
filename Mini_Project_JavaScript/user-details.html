@@ -98,100 +98,109 @@
     fetch(userURL)
         .then(response => response.json())
         .then(user => {
-
-            let div = document.getElementById('userDetails');
-
-            let h3 = document.createElement('h3');
-            h3.innerText = `${user.id}. ${user.name}`;
-
-            let pInfo = document.createElement('p');
-            pInfo.innerHTML = '<b>Info:</b>';
-
-            let p = document.createElement('p');
-            p.innerHTML = `username: ${user.username} <br> website: <a href="${user.website}">${user.website}</a> <br> email: <a href="${user.email}">${user.email}</a> <br>phone: ${user.phone}`;
-
-            div.append(h3,pInfo,p);
-
-            function display(obj, key, text) {
-                if (key === text) {
-                    let p = document.createElement('p');
-                    p.innerHTML = `${text}: ${obj[key]}`;
-                    p.style.margin = 0;
-                    div.appendChild(p);
-                }
-            }
-
-            let pAddress = document.createElement('p');
-            pAddress.innerHTML = '<b>Address:</b>';
-            div.appendChild(pAddress);
-
-            let address = user.address;
-            for (const key in address) {
-
-                display(address, key, 'city');
-                display(address, key, 'street');
-                display(address, key, 'suite');
-                display(address, key, 'zipcode');
-            }
-
-            let geo = address.geo;
-            for (const geoKey in geo) {
-                display(geo, geoKey, 'lat');
-                display(geo, geoKey, 'lng');
-            }
-
-            let company = user.company;
-            let pCompany = document.createElement('p');
-            pCompany.innerHTML = '<b>Company:</b>';
-            div.appendChild(pCompany);
-
-            for (const companyKey in company) {
-                display(company, companyKey, 'name');
-                display(company, companyKey, 'catchPhrase');
-                display(company, companyKey, 'bs');
-            }
-
+            displayUser(user);
         })
+
+    function displayUser(user) {
+
+        let div = document.getElementById('userDetails');
+
+        let h3 = document.createElement('h3');
+        h3.innerText = `${user.id}. ${user.name}`;
+
+        let pInfo = document.createElement('p');
+        pInfo.innerHTML = '<b>Info:</b>';
+
+        let p = document.createElement('p');
+        p.innerHTML = `username: ${user.username} <br> website: <a href="${user.website}">${user.website}</a> <br> email: <a href="${user.email}">${user.email}</a> <br>phone: ${user.phone}`;
+
+        div.append(h3,pInfo,p);
+
+        function display(obj, key, text) {
+            if (key === text) {
+                let p = document.createElement('p');
+                p.innerHTML = `${text}: ${obj[key]}`;
+                p.style.margin = 0;
+                div.appendChild(p);
+            }
+        }
+
+        let pAddress = document.createElement('p');
+        pAddress.innerHTML = '<b>Address:</b>';
+        div.appendChild(pAddress);
+
+        let address = user.address;
+        for (const key in address) {
+
+            display(address, key, 'city');
+            display(address, key, 'street');
+            display(address, key, 'suite');
+            display(address, key, 'zipcode');
+        }
+
+        let geo = address.geo;
+        for (const geoKey in geo) {
+            display(geo, geoKey, 'lat');
+            display(geo, geoKey, 'lng');
+        }
+
+        let company = user.company;
+        let pCompany = document.createElement('p');
+        pCompany.innerHTML = '<b>Company:</b>';
+        div.appendChild(pCompany);
+
+        for (const companyKey in company) {
+            display(company, companyKey, 'name');
+            display(company, companyKey, 'catchPhrase');
+            display(company, companyKey, 'bs');
+        }
+    }
 
     const postsURL = userURL+'/posts';
 
-    let button = document.getElementById('btn');
+    function getPosts(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(posts => {
+                displayPosts(posts);
+            })
+    }
 
-    button.addEventListener('click', () => {
-    fetch(postsURL)
-        .then(response => response.json())
-        .then(posts => {
+    function displayPosts(posts) {
 
-            let divPosts = document.getElementById('posts');
-            divPosts.innerText = '';
-            for (const post of posts) {
+        let divPosts = document.getElementById('posts');
+        divPosts.innerText = '';
+        for (const post of posts) {
 
-                let div = document.createElement('div');
-                div.classList.add('post');
-                div.innerHTML = post.title;
-                divPosts.appendChild(div);
+            let div = document.createElement('div');
+            div.classList.add('post');
+            div.innerHTML = post.title;
+            divPosts.appendChild(div);
 
-                let button = document.createElement('button');
-                button.classList.add('details');
-                button.innerText = 'details';
-                div.appendChild(button);
+            let button = document.createElement('button');
+            button.classList.add('details');
+            button.innerText = 'details';
+            div.appendChild(button);
 
-                button.addEventListener('click', () => {
-                    location.href = 'post-details.html?idPost='+encodeURIComponent(post.id)+"&idUser="+encodeURIComponent(userId);
-                })
-            }
-        })
-    })
+            button.addEventListener('click', () => {
+                location.href = 'post-details.html?idPost='+encodeURIComponent(post.id)+"&idUser="+encodeURIComponent(userId);
+            })
+        }
+    }
 
-    button.addEventListener('click', () => {
-        let toggle = document.getElementsByClassName('toggle')[0];
-        if (toggle.style.display === 'none') {
+    let toggle = document.getElementsByClassName('toggle')[0];
+
+    document.getElementById('btn').addEventListener('click', () => {
+
+        const computedStyle = window.getComputedStyle(toggle);
+        if (computedStyle.display === 'none') {
             toggle.style.display = 'block';
+            getPosts(postsURL);
         } else {
             toggle.style.display = 'none';
         }
-    })
 
+    })
 
 </script>
 </body>
