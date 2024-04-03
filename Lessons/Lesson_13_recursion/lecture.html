@@ -12,6 +12,181 @@
 
 <script>
 
+    // Set()
+    // let set = new Set();
+    //
+    // set.add('asd');
+    // set.add('asd');
+    // // тільки один раз додало 'asd'
+    //
+    // set.add(123);
+    // set.add(123);
+    // // тільки один раз додало 123
+    //
+    // let obj = {};
+    // set.add(obj);
+    // set.add(obj);
+    // // тільки один раз додало obj
+    //
+    // set.add({});
+    // set.add({});
+    // // додало обидва {}
+    //
+    // console.log(set);
+    //
+    // let set1 = new Set([11, 22, 33, 44, 55, 555]);
+    // console.log(set1);
+    // console.log(set1.has(555));
+    // console.log(set1.size);
+    // set1.forEach(value => console.log(value));
+
+    // Map()
+    // let map = new Map();
+    //
+    // map.set('fruit', {
+    //     id:1,
+    //     name:'apple'
+    // });
+    // map.set('vegetable', {
+    //     id:2,
+    //     name:'tomato'
+    // });
+    // map.set('fruit2', {
+    //     id:3,
+    //     name:'apple'
+    // });
+    // console.log(map);
+    // console.log(map.get('fruit')); // {id: 1, name: 'apple'}
+    //
+    // let keysObj = map.keys();
+    // console.log(keysObj); // MapIterator {'fruit', 'vegetable', 'fruit2'}
+    // let keysArr = Array.from(keysObj);
+    // console.log(keysArr); // ['fruit', 'vegetable', 'fruit2']
+    // console.log(Array.from(map.values())); // [{id:1, name:'apple'}, {id:2, name:'tomato'}, {id:3, name:'apple'}]
+
+    // Generator
+    // let keysIter = map.keys();
+    // console.log(keysIter.next()); // {value: 'fruit', done: false} done показує чи останній це обєкт в масиві
+    // console.log(keysIter.next()); // {value: 'vegetable', done: false}
+    // console.log(keysIter.next()); // {value: 'fruit2', done: false}
+    // console.log(keysIter.next()); // {value: undefined, done: true}
+    //
+    // function* foobar() {
+    //     yield 22;
+    //     yield 33;
+    //     yield 44;
+    // }
+    // let foobarGenerator = foobar();
+    // console.log(foobarGenerator.next());
+    // console.log(foobarGenerator.next());
+    // console.log(foobarGenerator.next());
+    // console.log(foobarGenerator.next());
+    //
+    // function * nonFullLoop(arr) {
+    //     for (const arrElement of arr) {
+    //         yield arrElement
+    //     }
+    // }
+    //
+    // let generator = nonFullLoop([1,2,3,4]);
+    // console.log(generator.next());
+    // console.log(generator.next());
+    // console.log(generator.next());
+
+    // Descriptors
+    // let user = {
+    //     id:1,
+    //     name: 'kokos',
+    // }
+    // Object.defineProperty(
+    //     user,
+    //     'surname',
+    //     {
+    //         value: 'shevchenko',
+    //         writable: true, // означає що цю змінну можна переписати у майбутньому, false не можна
+    //         enumerable: false, //  не можна доступитись до їх значень
+    //         configurable: true, // якщо буде false то не можна буде ще раз зробити Object.defineProperty( user, surname,{})
+    //     })
+    //
+    // console.log(user);
+    // for (const userKey in user) {
+    //     console.log(userKey); // для value: 'shevchenko' є enumerable: false тому вивело тільки id, name,а surname ні
+    // }
+
+    // clousures замикання
+   // function bar() {
+   //     let x = 0;
+   //     return function () {
+   //         x++;
+   //         console.log(x);
+   //     }
+   // }
+   // let foo = bar();
+   // foo();
+   // foo();
+   //
+   //  function userFactory(id, name) {
+   //      let user = {
+   //          id,
+   //          name
+   //      };
+   //      return {
+   //          total: function () {
+   //              console.log(user);
+   //          },
+   //          getObj: function () {
+   //              return {
+   //                  name: user.name
+   //              };
+   //          },
+   //          serId: function (id) {
+   //              if (id > 0) {
+   //                  user.id = id;
+   //              }
+   //          }
+   //      };
+   //  }
+   //  let kokos = userFactory(1, 'kokos');
+   //  console.log(kokos);
+   //  console.log(kokos.total());
+   //  console.log(kokos.getObj());
+   //  kokos.serId(1000);
+   //  console.log(kokos.total());
+
+    // recursion можливість функції викликати саму себе
+    let arr = [11, 22, 33, [44, 55], [66, 77, [111, 222]]]
+    let flat = [];
+    function flatter(array) {
+        for (const item of array) {
+           if (Array.isArray(item)) {
+               flatter(item);
+           } else {
+               flat.push(item);
+           }
+        }
+    }
+
+    flatter(arr);
+    console.log(flat); // [11, 22, 33, 44, 55, 66, 77, 111, 222]
+
+    // call back це можливість залишити невизначену умову
+    function foo(callback) {
+        callback();
+    }
+    foo(()=> console.log('test'));
+    foo(()=> console.log('hello'));
+
+    function arrayPrinter(arr, conditional) {
+        for (const item of arr) {
+            if (conditional(item)) {
+                console.log(item);
+            }
+        }
+    }
+    arrayPrinter([11, 22, 33, 44, 55, 66], function (x) {
+        return x > 6
+    })
+
 </script>
 </body>
 </html>
